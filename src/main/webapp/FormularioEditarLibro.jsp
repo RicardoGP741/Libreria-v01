@@ -4,7 +4,6 @@
 <%@page import="javaEEJDBC.Libro"%>
 <html lang="es">
 	<% int idLibro = Integer.parseInt(request.getParameter("id"));  //AQUI SE DEBERIA RECIBIR EL PARAMETRO%>
-	<%System.out.println("EL ID RECIBIDO ES:  "+idLibro);%>
 	<%Libro l = new Libro().buscarLibro(idLibro);%>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html;charset=UTF-8"></meta>

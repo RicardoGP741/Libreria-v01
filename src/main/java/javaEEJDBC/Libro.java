@@ -3,9 +3,20 @@ package javaEEJDBC;
 import java.io.File;
 import java.util.List;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
 @SuppressWarnings({ "rawtypes", "unchecked" })
+
+
+@Entity
+@Table(name = "libros")
 public class Libro {
 	
+	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int num_lib;
 	private String isbn_lib;
 	private String tit_lib;
@@ -72,7 +83,7 @@ public class Libro {
 		DataBaseHelper dbh = new DataBaseHelper();
 		List<Integer> ListaDeCategorias=dbh.seleccionarRegistros(consultaSQL,Integer.class);
 		//List<Integer>ListaDeCategorias = new ArrayList<Integer>();
-		
+		System.out.println(ListaDeCategorias);
 		dbh.cerrarObjetos();
 		return ListaDeCategorias;
 	}

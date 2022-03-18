@@ -15,8 +15,8 @@
 	<script type="text/javascript" src="js/validacionMostrarLibro.js"></script>
 	<title>Lista de Libros</title>
 </head>
-<body background="img/formulario.jpg">
-
+<body>
+//<body background="img/formulario.jpg">
 	<div class=contenedor>
 	
 	<a href="FormularioInsertarLibro.jsp">Insertar Nuevo Libro</a>
