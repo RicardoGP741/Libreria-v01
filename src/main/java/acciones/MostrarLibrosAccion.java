@@ -15,10 +15,10 @@ public class MostrarLibrosAccion extends Accion{
 	@Override
 	public String ejecutar(HttpServletRequest request, HttpServletResponse response){
 	
-		System.out.println("ACABA DE ENTRAR AL SERVLET");
+		System.out.println("Se netra a la MostrarLibrosAccion");
 		//accion = new MostrarLibrosAccion();
 		
-		
+		/*
 		List<Libro>ListaDeLibros = null;
 		List<Libro>ListaPorCategorias = null;
 		try {
@@ -49,9 +49,9 @@ public class MostrarLibrosAccion extends Accion{
 		} catch (DataBaseException | IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}
+		} */
 		//getServletContext().getRequestDispatcher("/jsp/index.jsp").forward(request, response);
-		/*
+		
 		List<Libro>ListaDeLibros = null;
 		List<Integer>ListaPorCategorias = null;
 		try {
@@ -64,7 +64,7 @@ public class MostrarLibrosAccion extends Accion{
 			request.setAttribute("ListaPorCategorias", ListaPorCategorias); }
 			catch (DataBaseException e) {
 				e.printStackTrace();
-			} */
+			} 
 		return "MostrarLibros.jsp";
 	}
 }

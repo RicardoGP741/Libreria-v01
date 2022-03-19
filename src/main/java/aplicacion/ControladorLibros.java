@@ -41,6 +41,16 @@ public class ControladorLibros extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException,IOException 
 	{
+		/*
+		System.out.println("=======================");
+		String url = request.getServletPath();
+		RequestDispatcher despachador = null;
+		Accion accion = null;
+		
+		System.out.println("URL" + url);
+		System.out.println("====:===================");
+		*/
+		
 		System.out.println("=======================");
 		Accion accion = null;
 		RequestDispatcher despachador = null;
@@ -63,43 +73,20 @@ public class ControladorLibros extends HttpServlet {
 		if(request.getServletPath().equals("/MostrarLibros.do"))   //SACA EL ORIGEN DE DONDE SE LLAMO Y LO COMPARA CON MSOTRAR LIBRO
 		{
 			
-			//accion = new MostrarLibrosAccion();
-			System.out.println(""+response.getWriter().append("Served at: ").append(request.getContextPath()));
-			System.out.println("ACABA DE ENTRAR AL SERVLET");
-			
 			List<Libro>ListaDeLibros = null;
-			List<Libro>ListaPorCategorias = null;
+			List<Integer>ListaPorCategorias = null;
 			try {
-				if(request.getParameter("categoria")==null|| request.getParameter("categoria").equals("Seleccionar")) {
-					System.out.println("PARAMETRO: "+request.getParameter("categoria"));
-					ListaDeLibros= Libro.buscarTodos();
-				}else {
-					int cat = Integer.parseInt(request.getParameter("categoria"));
-					ListaPorCategorias=Libro.buscarPorCategoria(cat);
-				}
 				
+				ListaDeLibros =Libro.buscarTodos();
+				ListaPorCategorias = Libro.buscarLasCategorias();
+				System.out.println("=====LISTA2=====");
+				System.out.println(ListaPorCategorias);
 				
-				//ListaPorCategorias= Libro.buscarPorCategoria(1);
-				List<Categoria>ListaDeCategorias= Categoria.buscarCategorias();
-				
-				
-					
 				
 				request.setAttribute("ListaDeLibros", ListaDeLibros);
-				request.setAttribute("ListaDeCategorias", ListaDeCategorias);
-				request.setAttribute("ListaPorCategoria", ListaPorCategorias);
-				
-				
-				
-				
-			} catch (DataBaseException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			despachador=request.getRequestDispatcher("MostrarLibros.jsp");
-			despachador.forward(request, response);
-			//getServletContext().getRequestDispatcher("/jsp/index.jsp").forward(request, response);
-				
+				request.setAttribute("ListaPorCategorias", ListaPorCategorias); }
+				catch (DataBaseException e) {
+				} 
 		}
 		else if(request.getServletPath().equals("/ControladorLibros.do")) 
 		{
@@ -131,6 +118,9 @@ public class ControladorLibros extends HttpServlet {
 				e.printStackTrace();
 			}
 		} 
+		else {
+			accion = Accion.getAccion(url.substring(1, url.length()-3));
+		}
 		if (accion!= null) {
 			despachador=request.getRequestDispatcher(accion.ejecutar(request, response));
 			despachador.forward(request, response);

@@ -83,7 +83,9 @@ public class Libro {
 		DataBaseHelper dbh = new DataBaseHelper();
 		List<Integer> ListaDeCategorias=dbh.seleccionarRegistros(consultaSQL,Integer.class);
 		//List<Integer>ListaDeCategorias = new ArrayList<Integer>();
+		System.out.println("=====ESTA ES LA LISTA=====");
 		System.out.println(ListaDeCategorias);
+		System.out.println("==========");
 		dbh.cerrarObjetos();
 		return ListaDeCategorias;
 	}

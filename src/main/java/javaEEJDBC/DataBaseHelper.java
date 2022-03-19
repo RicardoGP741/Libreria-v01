@@ -75,39 +75,41 @@ public class DataBaseHelper<T> extends Libro{
 	@SuppressWarnings("unchecked")
 	public List<T> seleccionarRegistros(String query, Class clase) throws DataBaseException
 	{
-		ResultSet filas=null;
-		List<T>listaDeObjetos=new ArrayList<T>();
-		try {
-			stm = con.createStatement();
-			filas=stm.executeQuery(query);
-			while(filas.next()) {
-				
-				T objeto = (T) Class.forName( //FORNAME BUSCA LA RUTA DONDE ESTA LA CLASE QUE SE LLAME IGUAL
-						clase.getName()).getDeclaredConstructor().newInstance();//LUEGO SE TRAE SU 
-																				//CONTRUCTOR Y SE INSTANCIA
-				Method[]metodos=objeto.getClass().getDeclaredMethods();
-				
-				for(int i=0; i<metodos.length;i++) {
-					if(metodos[i].getName().startsWith("set")) {
+				ResultSet filas=null;
+				List<T>listaDeObjetos=new ArrayList<T>();
+				try {
+				stm = con.createStatement();
+				filas=stm.executeQuery(query);
+				while(filas.next()) {
+					
+					Integer x = 1;
+					String linea = ""+Class.forName(clase.getName());
+					if(!linea.equals("class java.lang.Integer")) {
+						System.out.println("EMTRA 1");
+						T objeto = (T) Class.forName(
+								clase.getName()).getDeclaredConstructor().newInstance();//LUEGO SE TRAE SU 
+						Method[] metodos=objeto.getClass().getDeclaredMethods();
+								for(int i=0; i<metodos.length;i++) {
+									if(metodos[i].getName().startsWith("set")) {				
+										//IF POR SI NUESTOR VALOR ES INTEGER
+										if((metodos[i].getName().substring(3)).equals("num_lib") || metodos[i].getName().substring(3)
+												.equals("cat_lib")|| metodos[i].getName().substring(3).equals("id_cat")) {
+											metodos[i].invoke(objeto, filas.getInt(metodos[i].getName().substring(3)));
+										}else if((metodos[i].getName().substring(3)).equals("pre_lib")) {
+											metodos[i].invoke(objeto, filas.getFloat(metodos[i].getName().substring(3)));
+										}else {
+											metodos[i].invoke(objeto, filas.getString(metodos[i].getName().substring(3)));
+										}
+							}
 						
-						//IF POR SI NUESTOR VALOR ES INTEGER
-						if((metodos[i].getName().substring(3)).equals("num_lib") || metodos[i].getName().substring(3)
-								.equals("cat_lib")|| metodos[i].getName().substring(3).equals("id_cat")) {
-							metodos[i].invoke(objeto, filas.getInt(metodos[i].getName().substring(3)));
-						}else
-						//IF POR SI NUESTRO VALOR ES FLOTANTE
-						if((metodos[i].getName().substring(3)).equals("pre_lib")) {
-							metodos[i].invoke(objeto, filas.getFloat(metodos[i].getName().substring(3)));
-						}else {
-							metodos[i].invoke(objeto, filas.getString(metodos[i].getName().substring(3)));
 						}
-						
-					}else if(objeto.getClass().getName().equals("java.lang.Integer")) { //PROBABLEMENTE NO 
-						//SIRVE ESTE ELSE IF
-						objeto = (T)(""+filas.getInt("cat_lib")); //EFECTIVAMENTE NO SIRVE ESTA VALIDACION
-					}		
-				}
-				listaDeObjetos.add(objeto);
+						listaDeObjetos.add(objeto);
+					}
+					if(linea.equals("class java.lang.Integer")) {
+						System.out.println(filas.getInt("cat_lib"));
+						x = (filas.getInt("cat_lib"));
+						listaDeObjetos.add((T) x);
+					}
 				
 			}
 		}catch(SQLException|InstantiationException | IllegalAccessException | ClassNotFoundException | IllegalArgumentException | InvocationTargetException | NoSuchMethodException | SecurityException e) {
@@ -117,6 +119,7 @@ public class DataBaseHelper<T> extends Libro{
 			System.out.println("Error al seleccionar registros: "+e.getMessage());
 			throw new DataBaseException("Error al leer registros");
 		}
+			
 		return listaDeObjetos;
 	}
 	
