@@ -26,7 +26,7 @@ public class MostrarLibrosAccion extends Accion{
 			System.out.println("ACABA DE ENTRAR AL SERVLET");
 			if(request.getParameter("categoria")==null|| request.getParameter("categoria").equals("Seleccionar")) {
 				System.out.println("PARAMETRO: "+request.getParameter("categoria"));
-				ListaDeLibros= Libro.buscarTodos();
+				ListaDeLibros= Libro.();
 			}else {
 				int cat = Integer.parseInt(request.getParameter("categoria"));
 				ListaPorCategorias=Libro.buscarPorCategoria(cat);

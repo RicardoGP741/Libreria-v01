@@ -62,11 +62,12 @@
 						<td>${lib.getnum_lib()}</td>
 						<td>${lib.getisbn_lib()}</td>
 						<td>${lib.gettit_lib()}</td>
-						<c:forEach var="c" items="${ListaDeCategorias}">
+						<%-- <c:forEach var="c" items="${ListaDeCategorias}">
 							<c:if test="${c.getid_cat()==lib.getcat_lib()}">
 								<td>${c.getnom_cat()}</td>
 							</c:if>
-						</c:forEach>
+						</c:forEach> --%>
+						<td>${lib.getcat_lib()}</td>
 						<td>${lib.getpre_lib()}</td>
 						<td><a href="BorrarLibro.do?id=${lib.getnum_lib()}">Borar</a></td>
 						<td><a href="FormularioEditarLibro.jsp?id=${lib.getnum_lib()}">Editar</a></td>

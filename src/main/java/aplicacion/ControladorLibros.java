@@ -73,50 +73,11 @@ public class ControladorLibros extends HttpServlet {
 		if(request.getServletPath().equals("/MostrarLibros.do"))   //SACA EL ORIGEN DE DONDE SE LLAMO Y LO COMPARA CON MSOTRAR LIBRO
 		{
 			
-			List<Libro>ListaDeLibros = null;
-			List<Integer>ListaPorCategorias = null;
-			try {
-				
-				ListaDeLibros =Libro.buscarTodos();
-				ListaPorCategorias = Libro.buscarLasCategorias();
-				System.out.println("=====LISTA2=====");
-				System.out.println(ListaPorCategorias);
-				
-				
-				request.setAttribute("ListaDeLibros", ListaDeLibros);
-				request.setAttribute("ListaPorCategorias", ListaPorCategorias); }
-				catch (DataBaseException e) {
-				} 
+			accion = new MostrarLibrosAccion();
 		}
 		else if(request.getServletPath().equals("/ControladorLibros.do")) 
 		{
-			//accion = new FiltrarPorCategoriaAccion();
-			try {
-				List<Libro>ListaPorCategorias = null;
-				List<Libro>ListaDeLibros = null;
-				if(request.getParameter("categoria")==null|| request.getParameter("categoria").equals("Seleccionar")) {
-					System.out.println("PARAMETRO: "+request.getParameter("categoria"));
-					ListaDeLibros= Libro.buscarTodos();
-				}else {
-					int cat = Integer.parseInt(request.getParameter("categoria"));
-					ListaPorCategorias=Libro.buscarPorCategoria(cat);
-				}
-				
-				
-				//ListaPorCategorias= Libro.buscarPorCategoria(1);
-				List<Categoria>ListaDeCategorias= Categoria.buscarCategorias();
-				
-			 	request.setAttribute("ListaDeLibros", ListaDeLibros);
-				request.setAttribute("ListaDeCategorias", ListaDeCategorias);
-				request.setAttribute("ListaPorCategoria", ListaPorCategorias);
-				
-				
-				
-				
-			} catch (DataBaseException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+			accion = new FiltrarPorCategoriaAccion();
 		} 
 		else {
 			accion = Accion.getAccion(url.substring(1, url.length()-3));
