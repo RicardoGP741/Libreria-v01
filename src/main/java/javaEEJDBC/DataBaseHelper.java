@@ -82,12 +82,12 @@ public class DataBaseHelper<T> extends Libro{
 				stm = con.createStatement();
 				filas=stm.executeQuery(query);
 				while(filas.next()) {
-					T objeto = null;
+					
 					Integer x = 1;
 					String linea = ""+Class.forName(clase.getName());
 					if(!linea.equals("class java.lang.Integer")) {
 						System.out.println("EMTRA 1");
-						objeto = (T) Class.forName(
+						T objeto = (T) Class.forName(
 								clase.getName()).getDeclaredConstructor().newInstance();//LUEGO SE TRAE SU 
 						Method[] metodos=objeto.getClass().getDeclaredMethods();
 								for(int i=0; i<metodos.length;i++) {
@@ -95,9 +95,7 @@ public class DataBaseHelper<T> extends Libro{
 										//IF POR SI NUESTOR VALOR ES INTEGER
 										if((metodos[i].getName().substring(3)).equals("num_lib") || metodos[i].getName().substring(3)
 												.equals("cat_lib")|| metodos[i].getName().substring(3).equals("id_cat")) {
-											
 											metodos[i].invoke(objeto, filas.getInt(metodos[i].getName().substring(3)));
-											System.out.println(metodos[i].getName().substring(3));
 										}else if((metodos[i].getName().substring(3)).equals("pre_lib")) {
 											metodos[i].invoke(objeto, filas.getFloat(metodos[i].getName().substring(3)));
 										}else {
@@ -106,15 +104,14 @@ public class DataBaseHelper<T> extends Libro{
 							}
 						
 						}
-						
+						listaDeObjetos.add(objeto);
 					}
 					if(linea.equals("class java.lang.Integer")) {
-						System.out.println("if equal to ffff:   "+ filas.getInt("cat_lib"));
+						System.out.println(filas.getInt("cat_lib"));
 						x = (filas.getInt("cat_lib"));
 						listaDeObjetos.add((T) x);
 					}
-					System.out.println();
-					listaDeObjetos.add(objeto);
+				
 			}
 		}catch(SQLException|InstantiationException | IllegalAccessException | ClassNotFoundException | IllegalArgumentException | InvocationTargetException | NoSuchMethodException | SecurityException e) {
 			//e.printStackTrace();

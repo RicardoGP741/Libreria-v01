@@ -13,7 +13,7 @@ public class FiltrarPorCategoriaAccion extends Accion{
 	
 	@Override
 	public String ejecutar(HttpServletRequest request, HttpServletResponse response){
-		/*
+		
 		//accion = new FiltrarPorCategoriaAccion();
 		try {
 			List<Libro>ListaPorCategorias = null;
@@ -40,11 +40,11 @@ public class FiltrarPorCategoriaAccion extends Accion{
 		} catch (DataBaseException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}*/
+		}
 		
 		
 		
-		
+		/*
 		int C = Integer.parseInt(request.getParameter("categoria"));
 		List<Libro> listaDeLibros;
 		List<Integer> listaDeCategorias;
@@ -58,7 +58,7 @@ public class FiltrarPorCategoriaAccion extends Accion{
 			request.setAttribute("listaDeCategorias", listaDeCategorias); 
 		} catch (DataBaseException e) {
 			e.printStackTrace();
-		} 
+		} */
 		return "MostrarLibros.jsp";
 	}
 }
