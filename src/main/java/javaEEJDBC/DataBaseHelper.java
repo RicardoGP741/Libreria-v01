@@ -46,6 +46,7 @@ public class DataBaseHelper<T> extends Libro{
 		}
 	}
 
+	/*
 	//EL THROWS RETORNA EL ERROR A DONDE FUE LLAMADO, EL TRY CATCH USUALMENTE IMPRIME LA E.PRINTSTACKTRACE EN LA CONSOLA
 	public int modificarRegistro(String querySQL) throws DataBaseException {
 		int filasAfectadas=0;
@@ -70,7 +71,7 @@ public class DataBaseHelper<T> extends Libro{
 		}catch(SQLException e) {
 			e.printStackTrace();
 		}
-	}
+	} */
 	
 	@SuppressWarnings("unchecked")
 	public List<T> seleccionarRegistros(String query, Class clase) throws DataBaseException

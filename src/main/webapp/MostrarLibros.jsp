@@ -16,7 +16,7 @@
 	<title>Lista de Libros</title>
 </head>
 <body>
-//<body background="img/formulario.jpg">
+  <body bgcolor="white">
 	<div class=contenedor>
 	
 	<a href="FormularioInsertarLibro.jsp">Insertar Nuevo Libro</a>

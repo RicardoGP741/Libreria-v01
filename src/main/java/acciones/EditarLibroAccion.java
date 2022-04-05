@@ -3,7 +3,11 @@ package acciones;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+
 import javaEEJDBC.DataBaseException;
+import javaEEJDBC.HibernateHelper;
 import javaEEJDBC.Libro;
 
 public class EditarLibroAccion extends Accion{
@@ -17,22 +21,18 @@ public class EditarLibroAccion extends Accion{
 		String Cat = request.getParameter("catLibro");
 		String Pre = request.getParameter("preLibro");
 		
-		try {
-			new Libro(StrISBN, StrTitulo, Integer.parseInt(Cat), Float.parseFloat(Pre)).editarLibro(id);
-		} catch (NumberFormatException | DataBaseException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		}
 		
-		try {
-			
-			 new Libro(StrISBN, StrTitulo, Integer.parseInt(Cat), Float.parseFloat(Pre)).insertar();
-			 
-			 
-		} catch (DataBaseException e) {
-			
-			e.printStackTrace();
-		}
+		SessionFactory factoriaSession = HibernateHelper.getSessionFactory();
+		Session session = factoriaSession.openSession();
+		Libro libro = (Libro) session.find(Libro.class, id);
+		libro.setisbn_lib(StrISBN);
+		libro.settit_lib(StrTitulo);
+		libro.setcat_lib(Integer.parseInt(Cat));
+		libro.setpre_lib(Float.parseFloat(Pre));
+		libro.insertar();
+		session.close();
+		
+		
 	return ("MostrarLibros.do");
 	}
 }
