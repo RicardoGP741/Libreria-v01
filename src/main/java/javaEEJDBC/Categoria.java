@@ -3,22 +3,39 @@ package javaEEJDBC;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
+
+@Entity
+@Table(name = "categorias")
+
 public class Categoria {
+	@Id
+	@Column(name = "id_cat")
 	private int id_cat;
 	private String nom_cat;
+	@Fetch(value = FetchMode.SELECT)
+	@OneToMany (cascade = CascadeType.ALL)
+	@JoinColumn(name = "id_cat")
+	private List<Libro> listaDeLibros;
 	
-	public Categoria(int ID, String Categoria) {
-		//super();
-		this.id_cat=ID;
-		this.nom_cat=Categoria;
-	}
-	
-	
-
 	public Categoria() {
-	
 	}
-	
+	public List<Libro> getListaDeLibros() {
+		return listaDeLibros;
+	}
+
+	public void setListaDeLibros(List<Libro> listaDeLibros) {
+		this.listaDeLibros = listaDeLibros;
+	}
 	public int getid_cat() {
 		return id_cat;
 	}

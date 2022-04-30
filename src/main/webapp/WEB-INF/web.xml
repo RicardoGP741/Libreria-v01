@@ -16,6 +16,4 @@
   	<servlet-name>ControladorLibros</servlet-name>
   	<url-pattern>*.do</url-pattern>
   </servlet-mapping>
-  
-  
 </web-app>

@@ -1,25 +1,18 @@
 package aplicacion;
 
 import java.io.IOException;
-import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.hibernate.HibernateException;
+
 import acciones.Accion;
-import acciones.BorrarLibroAccion;
-import acciones.EditarLibroAccion;
 import acciones.FiltrarPorCategoriaAccion;
-import acciones.FormularioInsertarLibroAccion;
-import acciones.InsertarLibroAccion;
 import acciones.MostrarLibrosAccion;
-import javaEEJDBC.Categoria;
-import javaEEJDBC.DataBaseException;
-import javaEEJDBC.Libro;
 
 /**
  * Servlet implementation class ControladorLibros
@@ -51,29 +44,24 @@ public class ControladorLibros extends HttpServlet {
 		System.out.println("====:===================");
 		*/
 		
-		System.out.println("=======================");
 		Accion accion = null;
 		RequestDispatcher despachador = null;
 		String url = request.getServletPath();
-		accion = Accion.getAccion(url.substring(1, url.length()-3));
+		/*url = url.substring(1, url.length()-3);*/
+		System.out.println("Este es el url del controlador:  " + url);
+		//accion = Accion.getAccion(url);
 		System.out.println("Pasando por get Accion");
 		System.out.println("=======================");
-		/*
-		if(request.getServletPath().equals("/ControladorLibros.do")){
-			if(request.getParameter("categoria").equals("Seleccionar")) {
-				accion = new MostrarLibrosAccion();
-			}
-			else {
-				accion = new FiltrarPorCategoriaAccion();
-			}
-		} */
-			
-		
 		
 		if(request.getServletPath().equals("/MostrarLibros.do"))   //SACA EL ORIGEN DE DONDE SE LLAMO Y LO COMPARA CON MSOTRAR LIBRO
 		{
 			
-			accion = new MostrarLibrosAccion();
+			try {
+				accion = new MostrarLibrosAccion();
+			} catch (Exception Ex) {
+				// TODO Auto-generated catch block
+				Ex.printStackTrace();
+			}
 		}
 		else if(request.getServletPath().equals("/ControladorLibros.do")) 
 		{
@@ -86,6 +74,21 @@ public class ControladorLibros extends HttpServlet {
 			despachador=request.getRequestDispatcher(accion.ejecutar(request, response));
 			despachador.forward(request, response);
 		}	
+		
+		
+		/*
+		if(request.getServletPath().equals("/ControladorLibros.do")){
+			if(request.getParameter("categoria").equals("Seleccionar")) {
+				accion = new MostrarLibrosAccion();
+			}
+			else {
+				accion = new FiltrarPorCategoriaAccion();
+			}
+		} */
+			
+		
+		
+		
 		
 	}
 }

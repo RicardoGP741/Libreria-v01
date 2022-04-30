@@ -6,6 +6,8 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.hibernate.HibernateException;
+
 import javaEEJDBC.Categoria;
 import javaEEJDBC.DataBaseException;
 import javaEEJDBC.Libro;
@@ -56,15 +58,15 @@ public class MostrarLibrosAccion extends Accion{
 		List<Integer>ListaPorCategorias = null;
 		try {
 			
-			ListaDeLibros =Libro.buscarTodos();
-			ListaPorCategorias = Libro.buscarLasCategorias();
-			
+			ListaDeLibros =new Libro().buscarTodos();
+			//ListaPorCategorias = Libro.buscarLasCategorias();
 			
 			request.setAttribute("ListaDeLibros", ListaDeLibros);
-			request.setAttribute("ListaPorCategorias", ListaPorCategorias); }
-			catch (DataBaseException e) {
-				e.printStackTrace();
-			} 
+		}
+			//request.setAttribute("ListaPorCategorias", ListaPorCategorias); }
+		catch (HibernateException e1) {
+				e1.printStackTrace();
+			}
 		return "MostrarLibros.jsp";
 	}
 }

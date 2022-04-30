@@ -1,4 +1,4 @@
-
+/*
 
 function editar(){
 	var error=false;
@@ -55,7 +55,7 @@ function getId(){
 	return idSel
 }
 
-
+*/
 
 
 

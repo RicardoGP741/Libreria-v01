@@ -3,7 +3,11 @@ package acciones;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+
 import javaEEJDBC.DataBaseException;
+import javaEEJDBC.HibernateHelper;
 import javaEEJDBC.Libro;
 
 public class BorrarLibroAccion extends Accion{
@@ -12,14 +16,12 @@ public class BorrarLibroAccion extends Accion{
 	public String ejecutar(HttpServletRequest request, HttpServletResponse response){
 		
 		int id = Integer.parseInt(request.getParameter("id"));
-		try {
-			
-			new Libro().BorrarLibro(id);
-			
-		} catch (DataBaseException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		
+		SessionFactory factoriaSession = HibernateHelper.getSessionFactory();
+		Session session = factoriaSession.openSession();
+		session.find(Libro.class, id).BorrarLibro();
+		session.close();
+		
 	return ("MostrarLibros.do");
 	}
 }

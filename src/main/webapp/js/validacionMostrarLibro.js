@@ -1,6 +1,6 @@
 /**
  * 
- */
+
 
 function idLibro(id){
 		alert("VALOR DEL ID: "+id)
@@ -13,3 +13,5 @@ function idLibro(id){
  		
 		
 }
+
+*/
