@@ -6,9 +6,10 @@ import javax.servlet.http.HttpServletResponse;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
-import javaEEJDBC.DataBaseException;
-import javaEEJDBC.HibernateHelper;
-import javaEEJDBC.Libro;
+import beans.Libro;
+import dao.LibroDAO;
+import dbHelpers.DataBaseException;
+import dbHelpers.HibernateHelper;
 
 public class BorrarLibroAccion extends Accion{
 	
@@ -17,11 +18,9 @@ public class BorrarLibroAccion extends Accion{
 		
 		int id = Integer.parseInt(request.getParameter("id"));
 		
-		SessionFactory factoriaSession = HibernateHelper.getSessionFactory();
-		Session session = factoriaSession.openSession();
-		session.find(Libro.class, id).BorrarLibro();
-		session.close();
-		
-	return ("MostrarLibros.do");
+		LibroDAO libDAO = new LibroDAO();
+		libDAO.BorrarLibro(libDAO.buscarLibro(id));
+		return "MostrarLibros.do";
+
 	}
 }

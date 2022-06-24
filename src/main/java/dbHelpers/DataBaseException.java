@@ -1,4 +1,4 @@
-package javaEEJDBC;
+package dbHelpers;
 
 public class DataBaseException extends Exception{
 

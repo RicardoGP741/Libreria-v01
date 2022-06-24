@@ -2,9 +2,10 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
 <%@page import ="java.util.List"%>
 <%@page import ="java.util.ArrayList"%>
-<%@page import="javaEEJDBC.Libro"%>
-<%@page import="javaEEJDBC.Categoria"%>
-<%@page import="javaEEJDBC.DataBaseException"%>
+<%@page import="beans.Libro"%>
+<%@page import="beans.Categoria"%>
+<%@page import="dao.LibroDAO"%>
+<%@page import="dbHelpers.DataBaseException"%>
 <%@taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 
@@ -28,9 +29,10 @@
 		<select name="categoria">
 		<option>Seleccionar</option>
 			
+			<!--  
 			<c:forEach var="cat" items="${ListaDeCategorias}">
 				<option value ="${cat.getid_cat()}">${cat.getnom_cat()}</option>
-			</c:forEach>
+			</c:forEach> -->
 			
 				
 		</select>
@@ -62,11 +64,11 @@
 						<td>${lib.getnum_lib()}</td>
 						<td>${lib.getisbn_lib()}</td>
 						<td>${lib.gettit_lib()}</td>
-						<%-- <c:forEach var="c" items="${ListaDeCategorias}">
+						<!-- <c:forEach var="c" items="${ListaDeCategorias}">
 							<c:if test="${c.getid_cat()==lib.getcat_lib()}">
 								<td>${c.getnom_cat()}</td>
 							</c:if>
-						</c:forEach> --%>
+						</c:forEach> -->
 						<td>${lib.getcat_lib()}</td>
 						<td>${lib.getpre_lib()}</td>
 						<td><a href="BorrarLibro.do?id=${lib.getnum_lib()}">Borar</a></td>

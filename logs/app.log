@@ -1,0 +1,6 @@
+2022-06-16 23:45:09,479 ERROR o.h.e.j.s.SqlExceptionHelper [main] Communications link failure
+
+The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.
+2022-06-16 23:45:28,068 ERROR o.h.e.j.s.SqlExceptionHelper [main] Communications link failure
+
+The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.

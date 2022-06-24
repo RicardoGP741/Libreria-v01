@@ -6,9 +6,10 @@ import javax.servlet.http.HttpServletResponse;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
-import javaEEJDBC.DataBaseException;
-import javaEEJDBC.HibernateHelper;
-import javaEEJDBC.Libro;
+import beans.Libro;
+import dao.LibroDAO;
+import dbHelpers.DataBaseException;
+import dbHelpers.HibernateHelper;
 
 public class EditarLibroAccion extends Accion{
 	
@@ -22,17 +23,15 @@ public class EditarLibroAccion extends Accion{
 		String Pre = request.getParameter("preLibro");
 		
 		
-		SessionFactory factoriaSession = HibernateHelper.getSessionFactory();
-		Session session = factoriaSession.openSession();
-		Libro libro = (Libro) session.find(Libro.class, id);
+		LibroDAO libDAO = new LibroDAO();
+		Libro libro = libDAO.buscarLibro(id);
 		libro.setisbn_lib(StrISBN);
 		libro.settit_lib(StrTitulo);
 		libro.setcat_lib(Integer.parseInt(Cat));
 		libro.setpre_lib(Float.parseFloat(Pre));
-		libro.insertar();
-		session.close();
+		libDAO.GuardarCambios(libro);
+		return "MostrarLibros.do";
 		
 		
-	return ("MostrarLibros.do");
 	}
 }

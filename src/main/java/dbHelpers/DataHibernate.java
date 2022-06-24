@@ -1,4 +1,4 @@
-package javaEEJDBC;
+package dbHelpers;
 
 import java.util.List;
 
@@ -8,6 +8,8 @@ import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.query.Query;
+
+import beans.Libro;
 
 public class DataHibernate {
 	

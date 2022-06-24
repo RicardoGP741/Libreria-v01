@@ -1,4 +1,4 @@
-package javaEEJDBC;
+package beans;
 
 
 import java.util.List;
@@ -9,17 +9,21 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
+import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
+
+import dbHelpers.DataBaseException;
+import dbHelpers.DataBaseHelper;
 
 @Entity
 @Table(name = "categorias")
 
 public class Categoria {
 	@Id
-	@Column(name = "id_cat")
+	@PrimaryKeyJoinColumn(name = "id_cat")
 	private int id_cat;
 	private String nom_cat;
 	@Fetch(value = FetchMode.SELECT)
@@ -55,9 +59,10 @@ public class Categoria {
 
 
 	//CAMBIAR LOS ARRAYLIST POR LIST (SOLO LO PRIMERO Y EL RETORNO)
-	@SuppressWarnings({ "unchecked", "rawtypes" })
+	@SuppressWarnings({ "unchecked", "rawtypes"})
 	public static List<Categoria> buscarCategorias() throws DataBaseException {
-		String consultaSQL="SELECT * FROM categorias";
+	
+		String consultaSQL ="SELECT * FROM categorias";
 		DataBaseHelper dbh = new DataBaseHelper();
 		List <Categoria>ListaDeCategorias=dbh.seleccionarRegistros(consultaSQL, Categoria.class);
 		

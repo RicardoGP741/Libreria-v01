@@ -9,8 +9,8 @@ import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.query.Query;
 
-import javaEEJDBC.DataHibernate;
-import javaEEJDBC.Libro;
+import beans.Libro;
+import dbHelpers.DataHibernate;
 
 public class CRUDHibernate {
 

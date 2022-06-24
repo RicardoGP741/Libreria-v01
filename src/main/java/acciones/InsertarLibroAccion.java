@@ -3,8 +3,9 @@ package acciones;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import javaEEJDBC.DataBaseException;
-import javaEEJDBC.Libro;
+import beans.Libro;
+import dao.LibroDAO;
+import dbHelpers.DataBaseException;
 
 public class InsertarLibroAccion extends Accion{
 	
@@ -15,9 +16,7 @@ public class InsertarLibroAccion extends Accion{
 	String StrTitulo = request.getParameter("nomLibro");
 	String Cat = request.getParameter("catLibro");
 	String Pre = request.getParameter("preLibro"); 
-	new Libro(StrISBN, StrTitulo, Integer.parseInt(Cat), Float.parseFloat(Pre)).insertar();
-		 
-		 
+	new LibroDAO().insertar(new Libro(StrISBN, StrTitulo, Integer.parseInt(Cat), Float.parseFloat(Pre)));
 
 	return ("MostrarLibros.do");
 	}

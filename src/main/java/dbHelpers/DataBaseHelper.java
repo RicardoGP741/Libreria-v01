@@ -1,4 +1,4 @@
-package javaEEJDBC;
+package dbHelpers;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
@@ -14,6 +14,8 @@ import java.util.List;
 import org.apache.log4j.Level;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
+
+import beans.Libro;
 
 public class DataBaseHelper<T> extends Libro{
 

@@ -53,20 +53,14 @@ public class ControladorLibros extends HttpServlet {
 		System.out.println("Pasando por get Accion");
 		System.out.println("=======================");
 		
-		if(request.getServletPath().equals("/MostrarLibros.do"))   //SACA EL ORIGEN DE DONDE SE LLAMO Y LO COMPARA CON MSOTRAR LIBRO
+		if(request.getServletPath().equals("/ControladorLibros.do"))   //SACA EL ORIGEN DE DONDE SE LLAMO Y LO COMPARA CON MSOTRAR LIBRO
 		{
-			
-			try {
+			if(request.getParameter("categoria").equals("seleccionar")) {
 				accion = new MostrarLibrosAccion();
-			} catch (Exception Ex) {
-				// TODO Auto-generated catch block
-				Ex.printStackTrace();
+			} else {
+				accion = new FiltrarPorCategoriaAccion();
 			}
-		}
-		else if(request.getServletPath().equals("/ControladorLibros.do")) 
-		{
-			accion = new FiltrarPorCategoriaAccion();
-		} 
+		}	
 		else {
 			accion = Accion.getAccion(url.substring(1, url.length()-3));
 		}

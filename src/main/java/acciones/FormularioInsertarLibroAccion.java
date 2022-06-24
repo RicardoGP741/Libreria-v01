@@ -5,18 +5,19 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import javaEEJDBC.Categoria;
-import javaEEJDBC.DataBaseException;
-import javaEEJDBC.Libro;
+import beans.Categoria;
+import beans.Libro;
+import dao.LibroDAO;
+import dbHelpers.DataBaseException;
 
 public class FormularioInsertarLibroAccion extends Accion{
 	
 	@Override
 	public String ejecutar(HttpServletRequest request, HttpServletResponse response){
 		
-		List<Categoria> listaDeCategorias=null;
+		List<Integer> listaDeCategorias=null;
 		try {
-			listaDeCategorias = Categoria.buscarCategorias();
+			listaDeCategorias = new LibroDAO().buscarLasCategorias();
 			request.setAttribute("ListaDeCategorias", listaDeCategorias);
 		} catch (DataBaseException e) {
 			// TODO Auto-generated catch block
