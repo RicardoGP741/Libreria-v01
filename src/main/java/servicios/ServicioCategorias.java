@@ -1,10 +1,10 @@
-package dao;
+package servicios;
 
 import java.util.List;
-
 import beans.Categoria;
 
-public interface CategoriaDAO {
+
+public interface ServicioCategorias {
 	public abstract void insertar (Categoria lib);
 	public abstract List<Categoria> buscarTodos();
 	public abstract void borrar(Categoria lib);

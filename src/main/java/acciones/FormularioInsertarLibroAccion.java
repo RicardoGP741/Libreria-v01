@@ -5,8 +5,10 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import beans.Categoria;
-import beans.Libro;
+import dao.CategoriaDAO;
+import dao.CategoriaDAOJPAImpl;
+import dao.DAOAbstractFactory;
+import dao.DAOFactory;
 import dao.LibroDAO;
 import dbHelpers.DataBaseException;
 
@@ -16,13 +18,12 @@ public class FormularioInsertarLibroAccion extends Accion{
 	public String ejecutar(HttpServletRequest request, HttpServletResponse response){
 		
 		List<Integer> listaDeCategorias=null;
-		try {
-			listaDeCategorias = new LibroDAO().buscarLasCategorias();
-			request.setAttribute("ListaDeCategorias", listaDeCategorias);
-		} catch (DataBaseException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		DAOFactory factoria = DAOAbstractFactory.getInstance();
+		CategoriaDAO categoriaDAO = factoria.getCategoriaDAO();
+		listaDeCategorias = categoriaDAO.buscarLasCategorias();
+		request.setAttribute("ListaDeCategorias", listaDeCategorias);
+			
+			
 	return ("FormularioInsertarLibro.jsp");
 	}
 }

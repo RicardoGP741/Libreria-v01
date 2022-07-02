@@ -2,10 +2,17 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
 <%@page import="java.sql.SQLException" %>
 <%@page import="beans.Libro"%>
-<%@page import="dao.LibroDAO"%>
+<%@page import="servicios.ServicioLibros"%>
+<%@page import="servicios.ServicioLibrosImpl"%>
 <html lang="es">
-	<% int idLibro = Integer.parseInt(request.getParameter("id"));  //AQUI SE DEBERIA RECIBIR EL PARAMETRO%>
-	<%Libro l = new LibroDAO().buscarLibro(idLibro);%>
+	<%
+	 int idLibro = Integer.parseInt(request.getParameter("id"));  //AQUI SE DEBERIA RECIBIR EL PARAMET
+	%>
+	<%
+		ServicioLibros servicioLibros = new ServicioLibrosImpl();
+		
+		Libro l = servicioLibros.buscarPorClave(idLibro);
+	%>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html;charset=UTF-8"></meta>
 		<title>Formulario para editar un libro</title>

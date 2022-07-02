@@ -6,6 +6,8 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
@@ -23,11 +25,10 @@ import dbHelpers.DataBaseHelper;
 
 public class Categoria {
 	@Id
-	@PrimaryKeyJoinColumn(name = "id_cat")
+	@PrimaryKeyJoinColumn
 	private int id_cat;
 	private String nom_cat;
-	@Fetch(value = FetchMode.SELECT)
-	@OneToMany (cascade = CascadeType.ALL)
+	@OneToMany 
 	@JoinColumn(name = "id_cat")
 	private List<Libro> listaDeLibros;
 	
@@ -65,10 +66,11 @@ public class Categoria {
 		String consultaSQL ="SELECT * FROM categorias";
 		DataBaseHelper dbh = new DataBaseHelper();
 		List <Categoria>ListaDeCategorias=dbh.seleccionarRegistros(consultaSQL, Categoria.class);
-		
-		
+
 		dbh.cerrarObjetos();
+		System.out.println("============= buscarCategorias =============== \n"+ ListaDeCategorias);
 		return ListaDeCategorias;
+		
 	}
 	
 	

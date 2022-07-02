@@ -4,11 +4,11 @@
 <%@page import ="java.util.ArrayList"%>
 <%@page import="beans.Libro"%>
 <%@page import="beans.Categoria"%>
-<%@page import="dao.LibroDAO"%>
+<%@page import="dao.LibroDAOJPAImpl"%>
 <%@page import="dbHelpers.DataBaseException"%>
 <%@taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
-
+<%Categoria categ = new Categoria();%>
 <html lang="es">
 <head>
 	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8"></meta>
@@ -29,10 +29,10 @@
 		<select name="categoria">
 		<option>Seleccionar</option>
 			
-			<!--  
+			  
 			<c:forEach var="cat" items="${ListaDeCategorias}">
-				<option value ="${cat.getid_cat()}">${cat.getnom_cat()}</option>
-			</c:forEach> -->
+				<option value ="${categ.getid_cat()}">${categ.getnom_cat()}</option>
+			</c:forEach> 
 			
 				
 		</select>
@@ -64,11 +64,11 @@
 						<td>${lib.getnum_lib()}</td>
 						<td>${lib.getisbn_lib()}</td>
 						<td>${lib.gettit_lib()}</td>
-						<!-- <c:forEach var="c" items="${ListaDeCategorias}">
-							<c:if test="${c.getid_cat()==lib.getcat_lib()}">
-								<td>${c.getnom_cat()}</td>
+						 <c:forEach var="c" items="${ListaDeCategorias}">
+							<c:if test="${categ.getid_cat()==lib.getcat_lib()}">
+								<td>${categ.getnom_cat()}</td>
 							</c:if>
-						</c:forEach> -->
+						</c:forEach>
 						<td>${lib.getcat_lib()}</td>
 						<td>${lib.getpre_lib()}</td>
 						<td><a href="BorrarLibro.do?id=${lib.getnum_lib()}">Borar</a></td>

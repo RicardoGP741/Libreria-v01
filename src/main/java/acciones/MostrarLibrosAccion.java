@@ -10,8 +10,17 @@ import org.hibernate.HibernateException;
 
 import beans.Categoria;
 import beans.Libro;
+import dao.CategoriaDAO;
+import dao.CategoriaDAOJPAImpl;
+import dao.DAOAbstractFactory;
+import dao.DAOFactory;
 import dao.LibroDAO;
+import dao.LibroDAOJPAImpl;
 import dbHelpers.DataBaseException;
+import servicios.ServicioCategorias;
+import servicios.ServicioCategoriasImpl;
+import servicios.ServicioLibros;
+import servicios.ServicioLibrosImpl;
 
 public class MostrarLibrosAccion extends Accion{
 	
@@ -20,21 +29,20 @@ public class MostrarLibrosAccion extends Accion{
 	
 		System.out.println("Se netra a la MostrarLibrosAccion");
 
-		List<Libro>ListaDeLibros;
-		List<Integer>ListaDeCategorias;
-		LibroDAO DAOlib = new LibroDAO(); 
-		try {
+
+		//LibroDAOJPAImpl DAOlib = new LibroDAOJPAImpl(); 
+		//CategoriaDAOJPAImpl DAOcat = new CategoriaDAOJPAImpl();
+		ServicioLibros servicioLibros = new ServicioLibrosImpl();
+		ServicioCategorias servicioCategorias = new ServicioCategoriasImpl();
 			
-			ListaDeLibros = DAOlib.buscarTodos();
-			ListaDeCategorias = DAOlib.buscarLasCategorias();
+		List<Libro> ListaDeLibros = servicioLibros.buscarTodos();
+		List<Integer>ListaDeCategorias = servicioCategorias.buscarLasCategorias();
 			
 			request.setAttribute("ListaDeLibros", ListaDeLibros);
-			request.setAttribute("ListaDeCategorias", ListaDeLibros);
-		}
-			//request.setAttribute("ListaPorCategorias", ListaPorCategorias); }
-		catch (DataBaseException e1) {
-				e1.printStackTrace();
-			}
-		return "MostrarLibros.jsp";
+			request.setAttribute("ListaDeCategorias", ListaDeCategorias);
+		
+			return "MostrarLibros.jsp";
+			
 	}
 }
+	

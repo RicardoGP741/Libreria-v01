@@ -1,12 +1,10 @@
-package dao;
+package servicios;
 
 import java.util.List;
 
-import javax.persistence.Id;
-
 import beans.Libro;
 
-public interface LibroDAO {
+public interface ServicioLibros {
 	public abstract void insertar (Libro lib);
 	public abstract List<Libro> buscarTodos();
 	public abstract Libro buscarPorClave(Integer id);

@@ -7,9 +7,15 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
 import beans.Libro;
+import dao.CategoriaDAO;
+import dao.DAOAbstractFactory;
+import dao.DAOFactory;
 import dao.LibroDAO;
+import dao.LibroDAOJPAImpl;
 import dbHelpers.DataBaseException;
 import dbHelpers.HibernateHelper;
+import servicios.ServicioLibros;
+import servicios.ServicioLibrosImpl;
 
 public class EditarLibroAccion extends Accion{
 	
@@ -21,15 +27,14 @@ public class EditarLibroAccion extends Accion{
 		String StrTitulo = request.getParameter("nomLibro");
 		String Cat = request.getParameter("catLibro");
 		String Pre = request.getParameter("preLibro");
-		
-		
-		LibroDAO libDAO = new LibroDAO();
-		Libro libro = libDAO.buscarLibro(id);
+	
+		ServicioLibros servicioLibros = new ServicioLibrosImpl();
+		Libro libro = servicioLibros.buscarPorClave(id);
 		libro.setisbn_lib(StrISBN);
 		libro.settit_lib(StrTitulo);
 		libro.setcat_lib(Integer.parseInt(Cat));
 		libro.setpre_lib(Float.parseFloat(Pre));
-		libDAO.GuardarCambios(libro);
+		servicioLibros.guardarCambios(libro);
 		return "MostrarLibros.do";
 		
 		
