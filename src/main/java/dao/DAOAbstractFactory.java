@@ -6,7 +6,10 @@ public class DAOAbstractFactory{
 		if(tipo.equals("Hibernate")) {
 			//new DAOHibrnateFactory();
 			return null;
-		} else {
+		} else if(tipo.equals("JDBC")){
+			//new DAOJDBCFactory();
+			return null;
+		} else{
 			return new DAOJPAFactory();
 		}
 	}

@@ -11,5 +11,6 @@
 	<property name="show_sql">true</property>
 	<mapping class="beans.Libro"/>
 	<mapping class="beans.Categoria"/>
+	<mapping class="beans.Provedores"/>
 	</session-factory>
 </hibernate-configuration>

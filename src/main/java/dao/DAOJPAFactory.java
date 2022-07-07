@@ -7,5 +7,10 @@ public class DAOJPAFactory implements DAOFactory{
 	public LibroDAO getLibroDAO() {
 		return new LibroDAOJPAImpl(); 
 	}
+	@Override
+	public ProvedoresDAO getProvedorDAO() {
+		// TODO Auto-generated method stub
+		return new ProvedoresDAOJPAImpl();
+	}
 }
  

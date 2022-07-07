@@ -2,48 +2,48 @@ package servicios;
 
 import java.util.List;
 
-import beans.Categoria;  
-import dao.CategoriaDAO;
+import beans.Provedor;
 import dao.DAOAbstractFactory;
 import dao.DAOFactory;
-import dao.LibroDAO;
+import dao.ProvedoresDAO;
+import dbHelpers.DataBaseException;
 
-public class ServicioProvedoresImpl implements ServicioCategorias {
+public class ServicioProvedoresImpl implements ServicioProvedores {
 
-	private CategoriaDAO categoriaDAO=null;
+	private ProvedoresDAO provedoresDAO=null;
 	
 	public ServicioProvedoresImpl() {
 		DAOFactory factoria = DAOAbstractFactory.getInstance();
-		categoriaDAO = factoria.getCategoriaDAO();
+		provedoresDAO = factoria.getProvedorDAO();
 	}
 
 	@Override
-	public void insertar(Categoria cat) {
+	public void insertar(Provedor prov) {
 		// TODO Auto-generated method stub
-		categoriaDAO.insertar(cat);
+		provedoresDAO.insertar(prov);
 	}
 
 	@Override
-	public List<Categoria> buscarTodos() {
-		return categoriaDAO.buscarTodos();
+	public List<Provedor> buscarTodos() {
+		return provedoresDAO.buscarTodos();
 	}
 
 	@Override
-	public void borrar(Categoria cat) {
+	public void borrar(Provedor prov) {
 		// TODO Auto-generated method stub
-		categoriaDAO.insertar(cat);
+		provedoresDAO.insertar(prov);
 	}
 
 	@Override
-	public void guardarCambios(Categoria cat) {
+	public void guardarCambios(Provedor prov) {
 		// TODO Auto-generated method stub
-		categoriaDAO.guardarCambios(cat);
+		provedoresDAO.guardarCambios(prov);
 	}
 
 	@Override
-	public List<Integer> buscarLasCategorias() {
+	public List<Provedor> buscarProvedores() throws DataBaseException {
 		// TODO Auto-generated method stub
-		return categoriaDAO.buscarLasCategorias();
+		return provedoresDAO.buscarProvedores();
 	}
 	
 	

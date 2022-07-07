@@ -11,6 +11,5 @@ public interface GenericDAO<T, Id extends Serializable> {
 	void borrar(T objeto);
 	void insertar(T objeto);
 	void guardarCambios(T objeto);
-	List<Integer> buscarLasCategorias();
 	
 }

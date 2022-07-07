@@ -34,15 +34,4 @@ public class LibroDAOJPAImpl extends GenericDAOJPAImpl<Libro, Integer> implement
 		
 	}
 
-	@Override
-	public List<Integer> buscarLasCategorias() {
-		// TODO Auto-generated method stub
-		EntityManagerFactory factoriaSession = JPAHelper.getJPAFactory();
-		EntityManager manager = factoriaSession.createEntityManager();
-		TypedQuery<Integer>consulta = manager.createQuery("SELECT DISTINCT libro.cat_lib FROM Libro libro", Integer.class);
-		List<Integer> ListaDeCategorias = consulta.getResultList();
-		manager.close();
-		return ListaDeCategorias;
-	}
-
 }
