@@ -11,8 +11,8 @@ import javax.servlet.http.HttpServletResponse;
 import org.hibernate.HibernateException;
 
 import acciones.Accion;
-import acciones.FiltrarPorCategoriaAccion;
-import acciones.MostrarLibrosAccion;
+import acciones.Categoria.FiltrarPorCategoriaAccion;
+import acciones.Libro.MostrarLibrosAccion;
 
 /**
  * Servlet implementation class ControladorLibros
@@ -47,19 +47,18 @@ public class ControladorLibros extends HttpServlet {
 		Accion accion = null;
 		RequestDispatcher despachador = null;
 		String url = request.getServletPath();
-		/*url = url.substring(1, url.length()-3);*/
 		System.out.println("Este es el url del controlador:  " + url);
-		//accion = Accion.getAccion(url);
 		System.out.println("Pasando por get Accion");
 		System.out.println("=======================");
 		
 		if(request.getServletPath().equals("/ControladorLibros.do"))   //SACA EL ORIGEN DE DONDE SE LLAMO Y LO COMPARA CON MSOTRAR LIBRO
 		{
-			if(request.getParameter("categoria").equals("seleccionar")) {
+			/*if(request.getParameter("categoria").equals("seleccionar")) {
 				accion = new MostrarLibrosAccion();
 			} else {
 				accion = new FiltrarPorCategoriaAccion();
-			}
+			}*/
+			accion = new MostrarLibrosAccion();
 		}	
 		else {
 			accion = Accion.getAccion(url.substring(1, url.length()-3));

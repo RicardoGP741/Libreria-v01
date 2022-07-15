@@ -31,7 +31,7 @@ public class ServicioProvedoresImpl implements ServicioProvedores {
 	@Override
 	public void borrar(Provedor prov) {
 		// TODO Auto-generated method stub
-		provedoresDAO.insertar(prov);
+		provedoresDAO.borrar(prov);
 	}
 
 	@Override
@@ -44,6 +44,14 @@ public class ServicioProvedoresImpl implements ServicioProvedores {
 	public List<Provedor> buscarProvedores() throws DataBaseException {
 		// TODO Auto-generated method stub
 		return provedoresDAO.buscarProvedores();
+	}
+
+
+
+	@Override
+	public Provedor buscarPorClave(int id) {
+		// TODO Auto-generated method stub
+		return provedoresDAO.buscarPorClave(id);
 	}
 	
 	

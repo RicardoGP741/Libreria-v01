@@ -13,6 +13,7 @@ import beans.Libro;
 
 public class DataHibernate {
 	
+	/*
 	public List<Libro> leerLibros() {
 		Session session = null;
 		List<Libro> listaLibros = null;
@@ -122,5 +123,5 @@ public class DataHibernate {
 		finally {
 			if(session!=null) session.close();
 		}
-	}
+	}*/
 }

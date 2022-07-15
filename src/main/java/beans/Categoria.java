@@ -1,11 +1,13 @@
 package beans;
 
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -24,15 +26,19 @@ import dbHelpers.DataBaseHelper;
 @Table(name = "categorias")
 
 public class Categoria {
-	@Id
-	@PrimaryKeyJoinColumn
+	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column
 	private int id_cat;
+	@Column
 	private String nom_cat;
-	@OneToMany 
-	@JoinColumn(name = "id_cat")
+	@OneToMany(cascade = CascadeType.MERGE,mappedBy="categoria")
 	private List<Libro> listaDeLibros;
 	
+	public Categoria(String nombre) {
+		nom_cat = nombre;
+	}
 	public Categoria() {
+		
 	}
 	public List<Libro> getListaDeLibros() {
 		return listaDeLibros;
@@ -56,22 +62,13 @@ public class Categoria {
 	public void setnom_cat(String nom_cat) {
 		this.nom_cat = nom_cat;
 	}
-
-
-
-	//CAMBIAR LOS ARRAYLIST POR LIST (SOLO LO PRIMERO Y EL RETORNO)
-	@SuppressWarnings({ "unchecked", "rawtypes"})
-	public static List<Categoria> buscarCategorias() throws DataBaseException {
 	
-		String consultaSQL ="SELECT * FROM categorias";
-		DataBaseHelper dbh = new DataBaseHelper();
-		List <Categoria>ListaDeCategorias=dbh.seleccionarRegistros(consultaSQL, Categoria.class);
-
-		dbh.cerrarObjetos();
-		System.out.println("============= buscarCategorias =============== \n"+ ListaDeCategorias);
-		return ListaDeCategorias;
-		
+	public String toString() {
+		return this.id_cat+"\t\t"+this.nom_cat;
 	}
+
+
+
 	
 	
 	

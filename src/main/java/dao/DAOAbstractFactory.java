@@ -1,5 +1,7 @@
 package dao;
 
+import dao.JPA.DAOJPAFactory;
+
 public class DAOAbstractFactory{
 	public static DAOFactory getInstance() {
 		String tipo = "JPA";

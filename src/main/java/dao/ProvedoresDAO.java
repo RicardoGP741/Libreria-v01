@@ -12,4 +12,5 @@ public interface ProvedoresDAO {
 	public abstract void borrar(Provedor lib);
 	public abstract void guardarCambios(Provedor lib);
 	public abstract List<Provedor> buscarProvedores() throws DataBaseException;
+	public abstract Provedor buscarPorClave(Integer id);
 }

@@ -9,5 +9,6 @@ public interface CategoriaDAO {
 	public abstract List<Categoria> buscarTodos();
 	public abstract void borrar(Categoria lib);
 	public abstract void guardarCambios(Categoria lib);
-	public abstract List<Integer> buscarLasCategorias();
+	public abstract List<Categoria> buscarLasCategorias();
+	public abstract Categoria buscarPorClave(Integer id);
 }

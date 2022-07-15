@@ -31,7 +31,7 @@ public class ServicioCategoriasImpl implements ServicioCategorias {
 	@Override
 	public void borrar(Categoria cat) {
 		// TODO Auto-generated method stub
-		categoriaDAO.insertar(cat);
+		categoriaDAO.borrar(cat);;
 	}
 
 	@Override
@@ -41,9 +41,15 @@ public class ServicioCategoriasImpl implements ServicioCategorias {
 	}
 
 	@Override
-	public List<Integer> buscarLasCategorias() {
+	public List<Categoria> buscarLasCategorias() {
 		// TODO Auto-generated method stub
 		return categoriaDAO.buscarLasCategorias();
+	}
+
+	@Override
+	public Categoria buscarPorClave(Integer id) {
+		// TODO Auto-generated method stub
+		return categoriaDAO.buscarPorClave(id);
 	}
 	
 	

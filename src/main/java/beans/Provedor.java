@@ -2,6 +2,8 @@ package beans;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
@@ -18,43 +20,43 @@ public class Provedor {
 	@Id
 	@PrimaryKeyJoinColumn
 	private int id_prov;
+	@Column
 	private String nom_prov;
-	@OneToMany 
-	@JoinColumn(name = "id_prov")
-	private List<Provedor> ListaDeProvedores;
-	
+	@OneToMany(cascade = CascadeType.MERGE,mappedBy="provedor")
+	private List<Libro> listaDeLibros;
+
 	public Provedor() {
 	}
+	
+	public Provedor(String nombre) {
+		nom_prov = nombre;
+	}
+	
+	public List<Libro> getListaDeLibros() {
+		return listaDeLibros;
+	}
 
-	public int getid_cat() {
+	public void setListaDeLibros(List<Libro> listaDeLibros) {
+		this.listaDeLibros = listaDeLibros;
+	}
+
+	public int getid_prov() {
 		return id_prov;
 	}
 
-	public void setid_cat(int id_prov) {
+	public void setid_prov(int id_prov) {
 		this.id_prov = id_prov;
 	}
 
-	public String getnom_cat() {
+	public String getnom_prov() {
 		return nom_prov;
 	}
 
-	public void setnom_cat(String nom_prov) {
+	public void setnom_prov(String nom_prov) {
 		this.nom_prov = nom_prov;
 	}
 
-
-
-	//CAMBIAR LOS ARRAYLIST POR LIST (SOLO LO PRIMERO Y EL RETORNO)
-	@SuppressWarnings({ "unchecked", "rawtypes"})
-	public static List<Provedor> buscarProvedores() throws DataBaseException {
-	
-		String consultaSQL ="SELECT * FROM provedores";
-		DataBaseHelper dbh = new DataBaseHelper();
-		List <Provedor>ListaDeProvedores=dbh.seleccionarRegistros(consultaSQL, Provedor.class);
-
-		dbh.cerrarObjetos();
-		System.out.println("============= ListaDeProvedores =============== \n"+ ListaDeProvedores);
-		return ListaDeProvedores;
-		
+	public String toString() {
+		return this.id_prov+"\t\t"+this.nom_prov;
 	}
 }
