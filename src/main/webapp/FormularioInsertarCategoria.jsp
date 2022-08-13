@@ -24,10 +24,10 @@
         </div>
 	  		<h1><a href="index.html" class="logo">Libreria</a></h1>
         <ul class="list-unstyled components mb-5">
-          <li class="active">
+          <li>
             <a href="Libro.MostrarLibros.do"><span class="fa fa-home mr-3"></span> Inicio</a>
           </li>
-          <li>
+          <li  class="active">
               <a href="Categoria.MostrarCategorias.do"><span class="fa fa-user mr-3"></span> Categorias</a>
           </li>
           <li>
@@ -39,15 +39,13 @@
 
         <!-- Page Content  -->
       <div id="content" class="p-4 p-md-5 pt-5">
-	
-          <h1>Formulario Editar Libro</h1>
-          <form action="Categoria.InsertarCategoria.do" method="GET">
+          <h1>Formulario Insertar Categoria</h1>
+          <form action="Categoria.InsertarCategoria.do" method="GET" class="needs-validation">
             >
             <div class="form-group">
               <label for="Nombre">Nombre:</label>
-              <input class="form-control" id="Nombre" name="nomCategoria">
+              <input class="form-control" id="Nombre" name="nomCategoria" required>
             </div>
-
             <button type="submit" class="btn btn-primary" name="insertar">Insertar</button>
 
             <p class="navegar"><a href="Categoria.MostrarCategorias.do">Cancelar</a></p>

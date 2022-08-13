@@ -53,7 +53,6 @@
       <div id="content" class="p-4 p-md-5 pt-5">
       
         <a href="Libro.FormularioInsertarLibro.do">Insertar Nuevo Libro</a>
-	
 	      <form action="Libro.ControladorLibros.do" method="GET">
     
         <h2 class="mb-4">Cursodia | Java EE</h2>
@@ -73,6 +72,7 @@
 			</select>
 			<input type="submit" value="Filtrar" /> 
 	   </p> -->
+     
         <table id="dtBasicExample" class="table table-striped cellspacing="0" width="100%">
           <thead>
             <tr>

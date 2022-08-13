@@ -35,10 +35,10 @@
         </div>
 	  		<h1><a href="index.html" class="logo">Libreria</a></h1>
         <ul class="list-unstyled components mb-5">
-          <li class="active">
+          <li>
             <a href="Libro.MostrarLibros.do"><span class="fa fa-home mr-3"></span> Inicio</a>
           </li>
-          <li>
+          <li  class="active">
               <a href="Categoria.MostrarCategorias.do"><span class="fa fa-user mr-3"></span> Categorias</a>
           </li>
           <li>
@@ -52,14 +52,14 @@
       <div id="content" class="p-4 p-md-5 pt-5">
 	
           <h1>Formulario Editar Libro</h1>
-          <form action="Categoria.EditarCategoria.do" method="GET">
+          <form action="Categoria.EditarCategoria.do" method="GET" class="needs-validation">
             <div class="form-group">
               <label for="ID">ID:</label>
-              <input type="text" class="form-control" id="ID" name="idCateg" value="<%=cat.getid_cat() %>">
+              <input type="text" class="form-control" id="ID" name="idCateg" value="<%=cat.getid_cat() %>" readonly>
             </div>
             <div class="form-group">
               <label for="Categ">Nombre de la categoria:</label>
-              <input type="text" class="form-control" id="Categ" name="CategNom" value="<%=cat.getnom_cat() %>">
+              <input type="text" class="form-control" id="Categ" name="CategNom" value="<%=cat.getnom_cat() %>" required>
             </div>
 
 

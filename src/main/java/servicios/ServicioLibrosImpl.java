@@ -7,6 +7,7 @@ import dao.CategoriaDAO;
 import dao.DAOAbstractFactory;
 import dao.DAOFactory;
 import dao.LibroDAO;
+import dbHelpers.DataBaseException;
 
 public class ServicioLibrosImpl implements ServicioLibros {
 
@@ -48,7 +49,7 @@ public class ServicioLibrosImpl implements ServicioLibros {
 	}
 
 	@Override
-	public List<Libro> buscarPorCategoria(int cat) {
+	public List<Libro> buscarPorCategoria(int cat) throws DataBaseException {
 		// TODO Auto-generated method stub
 		return libroDAO.buscarPorCategoria(cat);
 	}

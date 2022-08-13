@@ -35,13 +35,13 @@
         </div>
 	  		<h1><a href="index.html" class="logo">Libreria</a></h1>
         <ul class="list-unstyled components mb-5">
-          <li class="active">
+          <li >
             <a href="Libro.MostrarLibros.do"><span class="fa fa-home mr-3"></span> Inicio</a>
           </li>
           <li>
               <a href="Categoria.MostrarCategorias.do"><span class="fa fa-user mr-3"></span> Categorias</a>
           </li>
-          <li>
+          <li class="active">
             <a href="Provedor.MostrarProvedores.do"><span class="fa fa-sticky-note mr-3"></span> Provedores</a>
           </li>
         </ul>
@@ -52,14 +52,14 @@
       <div id="content" class="p-4 p-md-5 pt-5">
 	
           <h1>Formulario Editar provedor</h1>
-          <form action="Provedor.EditarProvedor.do" method="GET">
+          <form action="Provedor.EditarProvedor.do" method="GET" class="needs-validation">
             <div class="form-group">
               <label for="ID">ID:</label>
-              <input type="text" class="form-control" id="ID" name="id" value="<%=Prov.getid_prov() %>">
+              <input type="text" class="form-control" id="ID" name="id" value="<%=Prov.getid_prov() %>" readonly>
             </div>
             <div class="form-group">
               <label for="Categ">Nombre de el Provedor:</label>
-              <input type="text" class="form-control" id="Nombre" name="nomProvedor" value="<%=Prov.getnom_prov() %>">
+              <input type="text" class="form-control" id="Nombre" name="nomProvedor" value="<%=Prov.getnom_prov() %>" required>
             </div>
 
 

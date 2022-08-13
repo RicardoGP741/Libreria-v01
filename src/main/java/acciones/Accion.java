@@ -5,9 +5,11 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.hibernate.HibernateException;
 
+import dbHelpers.DataBaseException;
+
 public abstract class Accion {
 	
-	public abstract String ejecutar(HttpServletRequest request, HttpServletResponse response);
+	public abstract String ejecutar(HttpServletRequest request, HttpServletResponse response) throws DataBaseException;
 	
 
 	public static Accion getAccion(String tipo) {

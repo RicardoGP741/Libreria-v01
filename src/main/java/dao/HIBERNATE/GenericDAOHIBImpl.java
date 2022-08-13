@@ -4,13 +4,12 @@ import java.io.Serializable;
 import java.lang.reflect.ParameterizedType;
 import java.util.List;
 
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.EntityTransaction;
-import javax.persistence.PersistenceException;
-import javax.persistence.TypedQuery;
+
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
 
 import dao.GenericDAO;
+import dbHelpers.HibernateHelper;
 import dbHelpers.JPAHelper;
 
 public abstract class GenericDAOHIBImpl<T, Id extends Serializable> implements GenericDAO<T, Id> {
@@ -25,24 +24,41 @@ public abstract class GenericDAOHIBImpl<T, Id extends Serializable> implements G
 	}
 	
 	public T buscarPorClave(Id id) {
-		return null;
+		SessionFactory factoriaSession = HibernateHelper.getSessionFactory();
+		Session session = factoriaSession.openSession();
+		T objeto = (T)session.get(claseDePersistencia, id);
+		session.close();
+		return objeto;
 	}
 	
 	public List<T> buscarTodos(){
-		return null;
+		SessionFactory factoriaSession = HibernateHelper.getSessionFactory();
+		Session session = factoriaSession.openSession();
+		List<T>ListaDeObjetos = session.createQuery("SELECT o FROM "+claseDePersistencia.getSimpleName()+ " o", claseDePersistencia).list();
+		session.close();
+		return ListaDeObjetos;
 	}
 	
 	public void borrar(T objeto) {
-
+		SessionFactory factoriaSession = HibernateHelper.getSessionFactory();
+		Session session = factoriaSession.openSession();
+		session.beginTransaction();
+		session.delete(this);
+		session.getTransaction().commit();
+		session.close();
 	}
 	
 	public void insertar(T objeto) {
-
+		SessionFactory factoriaSession = HibernateHelper.getSessionFactory();
+		Session session = factoriaSession.openSession();
+		session.beginTransaction();
+		session.saveOrUpdate(this);
+		session.getTransaction().commit();
+		session.close();
 	}
 	
 	public void guardarCambios(T objeto) {
 
 	}
-	
 	
 }

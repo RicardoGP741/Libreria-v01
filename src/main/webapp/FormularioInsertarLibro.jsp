@@ -52,14 +52,14 @@
       <div id="content" class="p-4 p-md-5 pt-5">
 	
           <h1>Formulario Insertar Libro</h1>
-          <form action="Libro.InsertarLibro.do" method="GET">
+          <form action="Libro.InsertarLibro.do" method="GET" class="needs-validation">
             <div class="form-group">
               <label for="ISBN">ISBN:</label>
-              <input class="form-control" id="ISBN" name="ISBN">
+              <input class="form-control mt-0 amber-border" id="ISBN" name="ISBN">
             </div>
             <div class="form-group">
               <label for="Titulo">Titulo:</label>
-              <input class="form-control" id="Titulo" name="nomLibro">
+              <input class="form-control" id="Titulo" name="nomLibro" required>
             </div>
             <div class="form-group">
               <label for="Categoria">Categoria:</label>

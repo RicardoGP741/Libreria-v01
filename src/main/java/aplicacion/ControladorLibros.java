@@ -13,6 +13,7 @@ import org.hibernate.HibernateException;
 import acciones.Accion;
 import acciones.Categoria.FiltrarPorCategoriaAccion;
 import acciones.Libro.MostrarLibrosAccion;
+import dbHelpers.DataBaseException;
 
 /**
  * Servlet implementation class ControladorLibros
@@ -64,7 +65,12 @@ public class ControladorLibros extends HttpServlet {
 			accion = Accion.getAccion(url.substring(1, url.length()-3));
 		}
 		if (accion!= null) {
-			despachador=request.getRequestDispatcher(accion.ejecutar(request, response));
+			try {
+				despachador=request.getRequestDispatcher(accion.ejecutar(request, response));
+			} catch (DataBaseException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 			despachador.forward(request, response);
 		}	
 		

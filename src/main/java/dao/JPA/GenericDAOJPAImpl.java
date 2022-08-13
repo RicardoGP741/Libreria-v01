@@ -82,7 +82,6 @@ public abstract class GenericDAOJPAImpl<T, Id extends Serializable> implements G
 			tx.begin();
 			manager.persist(objeto);
 			tx.commit();
-			manager.close();
 			
 		} catch(PersistenceException e) {
 			e.printStackTrace();

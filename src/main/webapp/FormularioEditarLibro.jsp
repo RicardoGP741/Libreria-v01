@@ -60,10 +60,10 @@
       <div id="content" class="p-4 p-md-5 pt-5">
 	
           <h1>Formulario Editar Libro</h1>
-          <form action="Libro.EditarLibro.do" method="GET">
+          <form action="Libro.EditarLibro.do" method="GET" class="needs-validation">
             <div class="form-group">
               <label for="ID">ID:</label>
-              <input type="text" class="form-control" id="ID" name="idLibro" value="<%=l.getnum_lib() %>">
+              <input type="text" class="form-control" id="ID" name="idLibro" value="<%=l.getnum_lib() %>" readonly>
             </div>
             <div class="form-group">
               <label for="ISBN">ISBN:</label>
@@ -71,7 +71,7 @@
             </div>
             <div class="form-group">
               <label for="Titulo">Titulo:</label>
-              <input type="text" class="form-control" id="Titulo" name="nomLibro" value="<%=l.gettit_lib() %>">
+              <input type="text" class="form-control" id="Titulo" name="nomLibro" value="<%=l.gettit_lib() %>" required>
             </div>
             <div class="form-group">
               <label for="Categoria">Categoria:</label>

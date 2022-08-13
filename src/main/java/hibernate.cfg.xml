@@ -11,6 +11,9 @@
 	<property name="show_sql">true</property>
 	<mapping class="beans.Libro"/>
 	<mapping class="beans.Categoria"/>
-	<mapping class="beans.Provedores"/>
+	<mapping class="beans.Provedor"/>
+	<mapping class="dao.HIBERNATE.LibroDAOHIBImpl"/>
+	<mapping class="dao.HIBERNATE.CategoriaDAOHIBImpl"/>
+	<mapping class="dao.HIBERNATE.ProvedoresDAOHIBImpl"/>
 	</session-factory>
 </hibernate-configuration>

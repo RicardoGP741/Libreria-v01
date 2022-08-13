@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletResponse;
 import acciones.Accion;
 import beans.Categoria;
 import beans.Libro;
+import dbHelpers.DataBaseException;
 import servicios.ServicioCategorias;
 import servicios.ServicioCategoriasImpl;
 import servicios.ServicioLibros;
@@ -17,7 +18,7 @@ public class FiltrarPorCategoriaAccion extends Accion{
 	
 	@SuppressWarnings("static-access")
 	@Override
-	public String ejecutar(HttpServletRequest request, HttpServletResponse response){
+	public String ejecutar(HttpServletRequest request, HttpServletResponse response) throws DataBaseException{
 
 
 		int C = Integer.parseInt(request.getParameter("categoria"));

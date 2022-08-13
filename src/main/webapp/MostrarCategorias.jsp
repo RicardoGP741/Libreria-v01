@@ -32,10 +32,10 @@
         </div>
 	  		<h1><a href="#" class="logo">Libreria</a></h1>
         <ul class="list-unstyled components mb-5">
-          <li class="active">
+          <li>
             <a href="Libro.MostrarLibros.do"><span class="fa fa-sticky-note mr-3"></span> Inicio</a>
           </li>
-          <li>
+          <li  class="active">
               <a href="Categoria.MostrarCategorias.do"><span class="fa fa-home mr-3"></span> Categorias</a>
           </li>
           <li>

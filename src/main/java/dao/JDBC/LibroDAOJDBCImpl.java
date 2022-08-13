@@ -15,6 +15,7 @@ import org.hibernate.query.Query;
 import beans.Libro;
 import dao.LibroDAO;
 import dbHelpers.DataBaseException;
+import dbHelpers.DataBaseHelper;
 import dbHelpers.HibernateHelper;
 import dbHelpers.JPAHelper;
 
@@ -23,13 +24,11 @@ public class LibroDAOJDBCImpl extends GenericDAOJDBCImpl<Libro, Integer> impleme
 	
 	
 	
-	public List<Libro> buscarPorCategoria(int cat){
-		EntityManagerFactory factoriaSession = JPAHelper.getJPAFactory();
-		EntityManager manager = factoriaSession.createEntityManager();
-		TypedQuery<Libro>consulta = manager.createQuery("SELECT l FROM Libro l WHERE l.cat_lib=?1", Libro.class);
-		consulta.setParameter(1, cat);
-		List<Libro> ListaDeLibros = consulta.getResultList();
-		manager.close();
+	public List<Libro> buscarPorCategoria(int cat) throws DataBaseException{
+		String SQL ="SELECT * FROM libros WHERE cat_lib="+cat;
+		DataBaseHelper dbh = new DataBaseHelper();
+		List<Libro>ListaDeLibros = dbh.seleccionarRegistros(SQL, Libro.class);
+		dbh.cerrarObjetos();
 		return ListaDeLibros;
 		
 	}
