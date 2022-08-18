@@ -2,18 +2,12 @@ package dao.HIBERNATE;
 
 import java.util.List;
 
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.TypedQuery;
-
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
 import beans.Categoria;
 import dao.CategoriaDAO;
-import dbHelpers.DataBaseException;
 import dbHelpers.HibernateHelper;
-import dbHelpers.JPAHelper;
 
 
 

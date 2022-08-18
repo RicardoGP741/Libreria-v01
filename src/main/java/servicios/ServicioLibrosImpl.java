@@ -3,7 +3,6 @@ package servicios;
 import java.util.List;
 
 import beans.Libro;
-import dao.CategoriaDAO;
 import dao.DAOAbstractFactory;
 import dao.DAOFactory;
 import dao.LibroDAO;

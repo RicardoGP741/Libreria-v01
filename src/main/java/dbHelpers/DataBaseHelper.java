@@ -64,6 +64,7 @@ public class DataBaseHelper<T> extends Libro{
 	}
 	
 	public void cerrarObjetos() {
+		System.out.println("Se entra en Data base helper cerrarObjetos");
 		try {
 			if(stm!=null) stm.close();
 			if(con!=null) con.close();
@@ -75,6 +76,7 @@ public class DataBaseHelper<T> extends Libro{
 	@SuppressWarnings("unchecked")
 	public List<T> seleccionarRegistros(String query, Class clase) throws DataBaseException
 	{
+			System.out.println("Se entra en Data base helper seleccionarRegistros");
 				ResultSet filas=null;
 				List<T>listaDeObjetos=new ArrayList<T>();
 				try {
@@ -127,6 +129,7 @@ public class DataBaseHelper<T> extends Libro{
 	}
 	
 	public int actualizarRegistro(int id, Libro lib) {
+		System.out.println("Se entra en Data base helper actualizarRegistro");
 		String SQL ="UPDATE libros SET isbn_lib=?, tit_lib=?, cat_lib=?, pre_lib=? WHERE num_lib=?";
 		int filas=0;
 		try {

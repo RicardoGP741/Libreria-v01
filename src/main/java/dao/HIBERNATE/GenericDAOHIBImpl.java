@@ -4,13 +4,11 @@ import java.io.Serializable;
 import java.lang.reflect.ParameterizedType;
 import java.util.List;
 
-
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
 import dao.GenericDAO;
 import dbHelpers.HibernateHelper;
-import dbHelpers.JPAHelper;
 
 public abstract class GenericDAOHIBImpl<T, Id extends Serializable> implements GenericDAO<T, Id> {
 

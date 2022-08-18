@@ -5,11 +5,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import acciones.Accion;
 import beans.Categoria;
-import beans.Libro;
 import servicios.ServicioCategorias;
 import servicios.ServicioCategoriasImpl;
-import servicios.ServicioLibros;
-import servicios.ServicioLibrosImpl;
 
 public class EditarCategoriaAccion extends Accion{
 	

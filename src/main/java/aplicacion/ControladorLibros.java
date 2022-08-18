@@ -8,10 +8,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.hibernate.HibernateException;
-
 import acciones.Accion;
-import acciones.Categoria.FiltrarPorCategoriaAccion;
 import acciones.Libro.MostrarLibrosAccion;
 import dbHelpers.DataBaseException;
 

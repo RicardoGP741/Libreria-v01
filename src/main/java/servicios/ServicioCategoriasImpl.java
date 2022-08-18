@@ -2,11 +2,10 @@ package servicios;
 
 import java.util.List;
 
-import beans.Categoria;  
+import beans.Categoria;
 import dao.CategoriaDAO;
 import dao.DAOAbstractFactory;
 import dao.DAOFactory;
-import dao.LibroDAO;
 import dbHelpers.DataBaseException;
 
 public class ServicioCategoriasImpl implements ServicioCategorias {

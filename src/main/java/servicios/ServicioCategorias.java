@@ -1,8 +1,8 @@
 package servicios;
 
 import java.util.List;
+
 import beans.Categoria;
-import beans.Libro;
 import dbHelpers.DataBaseException;
 
 

@@ -4,13 +4,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import acciones.Accion;
-import beans.Categoria;
-import beans.Libro;
 import beans.Provedor;
-import servicios.ServicioCategorias;
-import servicios.ServicioCategoriasImpl;
-import servicios.ServicioLibros;
-import servicios.ServicioLibrosImpl;
 import servicios.ServicioProvedores;
 import servicios.ServicioProvedoresImpl;
 

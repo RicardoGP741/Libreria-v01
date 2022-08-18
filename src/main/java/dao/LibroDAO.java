@@ -13,5 +13,5 @@ public interface LibroDAO {
 	public abstract Libro buscarPorClave(Integer id);
 	public abstract void borrar(Libro lib);
 	public abstract void guardarCambios(Libro lib);
-	public abstract List<Libro> buscarPorCategoria(int cat) throws DataBaseException;
+	public abstract List<Libro> buscarPorCategoria(int cat) throws DataBaseException; //cambiar a entodad Categoria categoria
 }

@@ -3,9 +3,6 @@ package dbHelpers;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
-
-import beans.Libro;
-
 public class JPAHelper {
 	
 	private static final EntityManagerFactory emf = buildEntityManagerFactory();

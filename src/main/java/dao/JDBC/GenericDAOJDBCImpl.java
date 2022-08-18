@@ -4,17 +4,12 @@ import java.io.Serializable;
 import java.lang.reflect.ParameterizedType;
 import java.util.List;
 
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.EntityTransaction;
-import javax.persistence.PersistenceException;
 import javax.persistence.TypedQuery;
 
 import beans.Libro;
 import dao.GenericDAO;
 import dbHelpers.DataBaseException;
 import dbHelpers.DataBaseHelper;
-import dbHelpers.JPAHelper;
 
 public abstract class GenericDAOJDBCImpl<T, Id extends Serializable> implements GenericDAO<T, Id> {
 
