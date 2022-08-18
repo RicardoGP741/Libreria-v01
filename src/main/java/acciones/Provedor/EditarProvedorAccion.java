@@ -23,11 +23,9 @@ public class EditarProvedorAccion extends Accion{
 		
 		String StrNom = request.getParameter("nomProvedor");
 
-	
 		ServicioProvedores servicioProvedores = new ServicioProvedoresImpl();
 		Provedor Provedor = servicioProvedores.buscarPorClave(id);
 		Provedor.setnom_prov(StrNom);
-
 		servicioProvedores.guardarCambios(Provedor);
 		return ("Provedor.MostrarProvedores.do");
 		

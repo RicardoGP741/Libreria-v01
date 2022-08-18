@@ -17,9 +17,7 @@ public class InsertarCategoriaAccion extends Accion{
 		
 
 	String StrNombre = request.getParameter("nomCategoria");
-	
 	new ServicioCategoriasImpl().insertar(new Categoria(StrNombre));
-
 	return ("Categoria.MostrarCategorias.do");
 	}
 }

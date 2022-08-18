@@ -24,7 +24,6 @@ public class ProvedoresDAOJPAImpl extends GenericDAOJPAImpl<Provedor, Integer> i
 		List <Provedor>ListaDeProvedores=dbh.seleccionarRegistros(consultaSQL, Provedor.class);
 
 		dbh.cerrarObjetos();
-		System.out.println("============= ListaDeProvedores =============== \n"+ ListaDeProvedores);
 		return ListaDeProvedores;
 		
 	}

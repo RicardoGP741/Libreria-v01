@@ -19,14 +19,10 @@ public abstract class Accion {
 		
 		
 		try {
-			System.out.println("Este es el tipo:   " + tipo);
+			//Se consigue el nombre de la accion
 			String text = Accion.class.getPackage()+"."+ tipo+"Accion";
-			System.out.println("Asi queda el accion text:  " + text);
-			text = text.substring(8, text.length()); //acciones.MostrarLibrosAccion < debe quedar asi
-			System.out.println("Asi queda el accion text:  " + text);
-			System.out.println(text);
+			text = text.substring(8, text.length()); 
 			Class c = Class.forName(text);
-			System.out.println("Clase: " + c); 
 			accion = (Accion) c.newInstance();
 			
 		} catch (HibernateException hibernateEx) {

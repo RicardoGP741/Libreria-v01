@@ -20,7 +20,7 @@ public class FiltrarPorCategoriaAccion extends Accion{
 	@Override
 	public String ejecutar(HttpServletRequest request, HttpServletResponse response) throws DataBaseException{
 
-
+		//no se esta usando*********
 		int C = Integer.parseInt(request.getParameter("categoria"));
 
 		ServicioLibros servicioLibros = new ServicioLibrosImpl();

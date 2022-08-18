@@ -14,19 +14,12 @@ public class MostrarCategoriasAccion extends Accion{
 	
 	@Override
 	public String ejecutar(HttpServletRequest request, HttpServletResponse response){
-	
-		System.out.println("Se netra a la MostrarCategoriasAccion");
 
-
-		//LibroDAOJPAImpl DAOlib = new LibroDAOJPAImpl(); 
-		//CategoriaDAOJPAImpl DAOcat = new CategoriaDAOJPAImpl();
 		ServicioCategorias servicioCategorias = new ServicioCategoriasImpl();
 			
 		List<Categoria>ListaDeCategorias = servicioCategorias.buscarTodos();
 			
 			request.setAttribute("ListaDeCategorias", ListaDeCategorias);
-			System.out.println("**************************");
-			System.out.println(ListaDeCategorias);
 			return "MostrarCategorias.jsp";
 			
 	}

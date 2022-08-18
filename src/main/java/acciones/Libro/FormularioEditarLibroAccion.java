@@ -21,7 +21,7 @@ public class FormularioEditarLibroAccion extends Accion{
 	public String ejecutar(HttpServletRequest request, HttpServletResponse response){
 	
 
-		int idLibro = Integer.parseInt(request.getParameter("id"));  //AQUI SE DEBERIA RECIBIR EL PARAMET
+		int idLibro = Integer.parseInt(request.getParameter("id"));  
 		ServicioLibros servicioLibros = new ServicioLibrosImpl();
 		
 		Libro l = servicioLibros.buscarPorClave(idLibro);

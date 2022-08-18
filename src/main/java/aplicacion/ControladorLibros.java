@@ -18,7 +18,6 @@ import dbHelpers.DataBaseException;
 /**
  * Servlet implementation class ControladorLibros
  */
-//@WebServlet("/ControladorLibros")// ESTOS SON ANOTACIONES
 public class ControladorLibros extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -35,24 +34,12 @@ public class ControladorLibros extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException,IOException 
 	{
-		/*
-		System.out.println("=======================");
-		String url = request.getServletPath();
-		RequestDispatcher despachador = null;
-		Accion accion = null;
-		
-		System.out.println("URL" + url);
-		System.out.println("====:===================");
-		*/
-		
+
 		Accion accion = null;
 		RequestDispatcher despachador = null;
 		String url = request.getServletPath();
-		System.out.println("Este es el url del controlador:  " + url);
-		System.out.println("Pasando por get Accion");
-		System.out.println("=======================");
 		
-		if(request.getServletPath().equals("/ControladorLibros.do"))   //SACA EL ORIGEN DE DONDE SE LLAMO Y LO COMPARA CON MSOTRAR LIBRO
+		if(request.getServletPath().equals("/ControladorLibros.do"))   
 		{
 			/*if(request.getParameter("categoria").equals("seleccionar")) {
 				accion = new MostrarLibrosAccion();
@@ -72,22 +59,6 @@ public class ControladorLibros extends HttpServlet {
 				e.printStackTrace();
 			}
 			despachador.forward(request, response);
-		}	
-		
-		
-		/*
-		if(request.getServletPath().equals("/ControladorLibros.do")){
-			if(request.getParameter("categoria").equals("Seleccionar")) {
-				accion = new MostrarLibrosAccion();
-			}
-			else {
-				accion = new FiltrarPorCategoriaAccion();
-			}
-		} */
-			
-		
-		
-		
-		
+		}			
 	}
 }

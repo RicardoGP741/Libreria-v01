@@ -36,7 +36,6 @@ public class DataBaseHelper<T> extends Libro{
 			Class.forName(DRIVER);
 			con = DriverManager.getConnection(URL,USUARIO,CLAVE);
 			if(con!=null) {
-				//System.out.println("Conexion exitosa!");
 			}
 		}catch( SQLException e) {
 			System.out.println("Error de SQL: "+e.getMessage());
@@ -48,7 +47,6 @@ public class DataBaseHelper<T> extends Libro{
 		}
 	}
 
-	//EL THROWS RETORNA EL ERROR A DONDE FUE LLAMADO, EL TRY CATCH USUALMENTE IMPRIME LA E.PRINTSTACKTRACE EN LA CONSOLA
 	public int modificarRegistro(String querySQL) throws DataBaseException {
 		int filasAfectadas=0;
 		

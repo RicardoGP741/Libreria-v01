@@ -24,7 +24,6 @@ public class BorrarLibroAccion extends Accion{
 		
 		int id = Integer.parseInt(request.getParameter("id"));
 		ServicioLibros servicioLibros = new ServicioLibrosImpl();
-
 		servicioLibros.borrar(servicioLibros.buscarPorClave(id));
 		return "Libro.MostrarLibros.do";
 

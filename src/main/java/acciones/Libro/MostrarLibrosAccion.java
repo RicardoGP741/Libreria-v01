@@ -20,11 +20,6 @@ public class MostrarLibrosAccion extends Accion{
 	@Override
 	public String ejecutar(HttpServletRequest request, HttpServletResponse response){
 	
-		System.out.println("Se netra a la MostrarLibrosAccion");
-
-
-		//LibroDAOJPAImpl DAOlib = new LibroDAOJPAImpl(); 
-		//CategoriaDAOJPAImpl DAOcat = new CategoriaDAOJPAImpl();
 		ServicioLibros servicioLibros = new ServicioLibrosImpl();
 		ServicioCategorias servicioCategorias = new ServicioCategoriasImpl();
 		ServicioProvedores servicioProvedores = new ServicioProvedoresImpl();
@@ -36,11 +31,7 @@ public class MostrarLibrosAccion extends Accion{
 			request.setAttribute("ListaDeLibros", ListaDeLibros);
 			request.setAttribute("ListaDeCategorias", ListaDeCategorias);
 			request.setAttribute("ListaDeProvedores", ListaDeProvedores);
-		
-			System.out.println("**************************");
-			System.out.println(ListaDeLibros);
-			System.out.println(ListaDeCategorias);
-			System.out.println(ListaDeProvedores);
+
 			
 			return "MostrarLibros.jsp";
 			
