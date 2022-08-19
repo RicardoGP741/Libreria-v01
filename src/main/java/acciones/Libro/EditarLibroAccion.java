@@ -12,7 +12,6 @@ public class EditarLibroAccion extends Accion{
 	
 	@Override
 	public String ejecutar(HttpServletRequest request, HttpServletResponse response){
-		System.out.println(request.getParameter("idLibro") + request.getParameter("ISBNLibro") + request.getParameter("nomLibro"));
 		int id = Integer.parseInt(request.getParameter("idLibro"));
 		String StrISBN = request.getParameter("ISBNLibro");
 		String StrTitulo = request.getParameter("nomLibro");
