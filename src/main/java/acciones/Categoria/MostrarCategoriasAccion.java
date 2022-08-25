@@ -21,8 +21,6 @@ public class MostrarCategoriasAccion extends Accion{
 	public String ejecutar(HttpServletRequest request, HttpServletResponse response){
 
 		ServicioCategorias servicioCategorias =  (ServicioCategorias) getBean("ServicioCategorias", request);
-		CategoriaDAO categoriaDAO = (CategoriaDAO) getBean("CategoriaDAO", request);
-		servicioCategorias.setCategoriaDAO(categoriaDAO);
 			
 		List<Categoria>ListaDeCategorias = servicioCategorias.buscarTodos();
 			

@@ -8,10 +8,6 @@
 	<%
 	 int idCat = Integer.parseInt(request.getParameter("id"));  //AQUI SE DEBERIA RECIBIR EL PARAMET
 	%>
-	<%
-		ServicioCategorias servicioCategoria = new ServicioCategoriasImpl();
-		Categoria cat = servicioCategoria.buscarPorClave(idCat);
-	%>
   <head>
   	<title>Libreria</title>
     <meta charset="utf-8">
@@ -55,11 +51,11 @@
           <form action="Categoria.EditarCategoria.do" method="GET" class="needs-validation">
             <div class="form-group">
               <label for="ID">ID:</label>
-              <input type="text" class="form-control" id="ID" name="idCateg" value="<%=cat.getid_cat() %>" readonly>
+              <input type="text" class="form-control" id="ID" name="idCateg" value="${cat.getid_cat()}" readonly>
             </div>
             <div class="form-group">
               <label for="Categ">Nombre de la categoria:</label>
-              <input type="text" class="form-control" id="Categ" name="CategNom" value="<%=cat.getnom_cat() %>" required>
+              <input type="text" class="form-control" id="Categ" name="CategNom" value="${cat.getnom_cat()}" required>
             </div>
 
 
