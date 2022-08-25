@@ -15,11 +15,11 @@
 	    <artifactId>hibernate-core</artifactId>
 	    <version>5.6.5.Final</version>
 	</dependency>
-	<!--<dependency>
+	<dependency>
 	    <groupId>org.hibernate</groupId>
 	    <artifactId>hibernate-entitymanager</artifactId>
 	    <version>5.6.5.Final</version>
-	</dependency> -->
+	</dependency>
 
   <!-- https://mvnrepository.com/artifact/javax.servlet/servlet-api -->
 	<dependency>
@@ -86,6 +86,7 @@
 	    <artifactId>spring-context</artifactId>
 	    <version>5.3.20</version>
 	</dependency>
+
 	<!-- https://mvnrepository.com/artifact/org.springframework/spring-context-support -->
 	<dependency>
 	    <groupId>org.springframework</groupId>

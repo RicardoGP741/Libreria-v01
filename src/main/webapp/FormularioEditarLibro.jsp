@@ -9,16 +9,13 @@
 <%@taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <%@page import= "servicios.ServicioCategorias"%>
-<%@page import= "servicios.ServicioCategoriasImpl"%>
 <%@page import="beans.Libro"%>
 <%@page import="servicios.ServicioLibros"%>
-<%@page import="servicios.ServicioLibrosImpl"%>
+<%@page import="dao.LibroDAO"%>
+<%@page import="acciones.Accion"%>
 <html lang="es">
 	<%
-		int idLibro = Integer.parseInt(request.getParameter("id"));  //AQUI SE DEBERIA RECIBIR EL PARAMET
-		ServicioLibros servicioLibros = new ServicioLibrosImpl();
-			
-		Libro l = servicioLibros.buscarPorClave(idLibro);
+		int idLibro = Integer.parseInt(request.getParameter("id"));  
 	%>
   <head>
   	<title>Libreria</title>
@@ -63,15 +60,15 @@
           <form action="Libro.EditarLibro.do" method="GET" class="needs-validation">
             <div class="form-group">
               <label for="ID">ID:</label>
-              <input type="text" class="form-control" id="ID" name="idLibro" value="<%=l.getnum_lib() %>" readonly>
+              <input type="text" class="form-control" id="ID" name="idLibro" value="${l.getnum_lib()}" readonly>
             </div>
             <div class="form-group">
               <label for="ISBN">ISBN:</label>
-              <input type="text" class="form-control" id="ISBN" name="ISBNLibro" value="<%=l.getisbn_lib() %>">
+              <input type="text" class="form-control" id="ISBN" name="ISBNLibro" value="${l.getisbn_lib()}">
             </div>
             <div class="form-group">
               <label for="Titulo">Titulo:</label>
-              <input type="text" class="form-control" id="Titulo" name="nomLibro" value="<%=l.gettit_lib() %>" required>
+              <input type="text" class="form-control" id="Titulo" name="nomLibro" value="${l.gettit_lib()}" required>
             </div>
             <div class="form-group">
               <label for="Categoria">Categoria:</label>
@@ -86,15 +83,16 @@
             </div>
             <div class="form-group">
               <label for="Precio">Precio:</label>
-              <input type="text" class="form-control" id="Precio" name="preLibro" value="<%=l.getpre_lib() %>">
+              <input type="text" class="form-control" id="Precio" name="preLibro" value="${l.getpre_lib()}">
             </div>
             <div class="form-group">
               <label for="Provedor">Provedor:</label>
               <br>
               <select id="Provedor" name="provLibro">
-              <option value ="${l.getid_prov()}">${l.getnom_prov()}</option>
-				<c:forEach var="prov" items="${ListaDeProvedores}">
-					<option value ="${prov.getid_prov()}">${prov.getnom_prov()}</option>
+				<c:forEach var="prov" items="${ListaDeProvedores}">			
+					<c:if test="${prov.getid_prov()!=l.getprov_lib()}">
+						<option value ="${prov.getid_prov()}">${prov.getnom_prov()}</option>
+					</c:if>
 				</c:forEach>
 			</select>
             </div>

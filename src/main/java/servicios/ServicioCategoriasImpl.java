@@ -13,8 +13,7 @@ public class ServicioCategoriasImpl implements ServicioCategorias {
 	private CategoriaDAO categoriaDAO=null;
 	
 	public ServicioCategoriasImpl() {
-		DAOFactory factoria = DAOAbstractFactory.getInstance();
-		categoriaDAO = factoria.getCategoriaDAO();
+
 	}
 
 	@Override
@@ -52,5 +51,15 @@ public class ServicioCategoriasImpl implements ServicioCategorias {
 		return categoriaDAO.buscarPorClave(id);
 	}
 	
+	@Override
+	public CategoriaDAO getCategoriaDAO() {
+		// TODO Auto-generated method stub
+		return categoriaDAO;
+	}
+	@Override
+	public void setCategoriaDAO(CategoriaDAO categoriaDAO) {
+		// TODO Auto-generated method stub
+		this.categoriaDAO = categoriaDAO;
+	}
 	
 }

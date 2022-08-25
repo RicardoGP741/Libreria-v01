@@ -20,7 +20,7 @@ public abstract class GenericDAOJPAImpl<T, Id extends Serializable> implements G
 	
 	@SuppressWarnings("unchecked")
 	public GenericDAOJPAImpl() {
-		System.out.println("En generic DAO Implements: ");
+		System.out.println("En generic DAO Implements JPA: ");
 		this.claseDePersistencia = (Class <T>)((ParameterizedType)getClass().getGenericSuperclass()).getActualTypeArguments()[0];
 	}
 	

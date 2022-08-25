@@ -15,7 +15,7 @@ public class BorrarCategoriaAccion extends Accion{
 		
 		int id = Integer.parseInt(request.getParameter("id"));
 
-		ServicioCategorias servicioCategorias = new ServicioCategoriasImpl();
+		ServicioCategorias servicioCategorias =  (ServicioCategorias) getBean("ServicioCategorias", request);
 		servicioCategorias.borrar(servicioCategorias.buscarPorClave(id));
 		return ("Categoria.MostrarCategorias.do");
 

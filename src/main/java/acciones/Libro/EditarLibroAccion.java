@@ -19,7 +19,7 @@ public class EditarLibroAccion extends Accion{
 		String Pre = request.getParameter("preLibro");
 		String Prov = request.getParameter("provLibro");
 	
-		ServicioLibros servicioLibros = new ServicioLibrosImpl();
+		ServicioLibros servicioLibros = (ServicioLibros) getBean("ServicioLibros", request);
 		Libro libro = servicioLibros.buscarPorClave(id);
 		libro.setisbn_lib(StrISBN);
 		libro.settit_lib(StrTitulo);

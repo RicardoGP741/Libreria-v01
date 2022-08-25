@@ -12,13 +12,13 @@ public class EditarCategoriaAccion extends Accion{
 	
 	@Override
 	public String ejecutar(HttpServletRequest request, HttpServletResponse response){
-		System.out.println(request.getParameter("idCateg") + request.getParameter("CategNom"));
+
 		int id = Integer.parseInt(request.getParameter("idCateg"));
 		
 		String StrNom = request.getParameter("CategNom");
 
 	
-		ServicioCategorias servicioCategorias = new ServicioCategoriasImpl();
+		ServicioCategorias servicioCategorias =  (ServicioCategorias) getBean("ServicioCategorias", request);
 		Categoria categoria = servicioCategorias.buscarPorClave(id);
 		categoria.setnom_cat(StrNom);
 

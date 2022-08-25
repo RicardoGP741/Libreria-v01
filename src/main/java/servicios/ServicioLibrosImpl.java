@@ -1,21 +1,25 @@
-package servicios;
+ package servicios;
 
 import java.util.List;
 
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+
 import beans.Libro;
+import dao.CategoriaDAO;
 import dao.DAOAbstractFactory;
 import dao.DAOFactory;
 import dao.LibroDAO;
+import dao.ProvedoresDAO;
 import dbHelpers.DataBaseException;
 
 public class ServicioLibrosImpl implements ServicioLibros {
 
 	private LibroDAO libroDAO=null;
 
+
 	
 	public ServicioLibrosImpl() {
-		DAOFactory factoria = DAOAbstractFactory.getInstance();
-		libroDAO = factoria.getLibroDAO();
+
 	}
 	@Override
 	public void insertar(Libro lib) {
@@ -52,5 +56,17 @@ public class ServicioLibrosImpl implements ServicioLibros {
 		// TODO Auto-generated method stub
 		return libroDAO.buscarPorCategoria(cat);
 	}
+	@Override
+	public LibroDAO getLibroDAO() {
+		// TODO Auto-generated method stub
+		return libroDAO;
+	}
+	@Override
+	public void setLibroDAO(LibroDAO libroDAO) {
+		// TODO Auto-generated method stub
+		this.libroDAO = libroDAO;
+	}
+
+
 	
 }

@@ -20,9 +20,9 @@ public class FormularioInsertarLibroAccion extends Accion{
 	@Override
 	public String ejecutar(HttpServletRequest request, HttpServletResponse response){
 	
-
-		ServicioCategorias servicioCategorias = new ServicioCategoriasImpl();
-		ServicioProvedores servicioProvedores = new ServicioProvedoresImpl();	
+		ServicioCategorias servicioCategorias =  (ServicioCategorias) getBean("ServicioCategorias", request);
+		ServicioProvedores servicioProvedores =  (ServicioProvedores) getBean("ServicioProvedores", request);
+		
 		List<Categoria>ListaDeCategorias = servicioCategorias.buscarTodos();
 		List<Provedor>ListaDeProvedores = servicioProvedores.buscarTodos();	
 			request.setAttribute("ListaDeCategorias", ListaDeCategorias);

@@ -5,6 +5,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import acciones.Accion;
 import beans.Categoria;
+import servicios.ServicioCategorias;
 import servicios.ServicioCategoriasImpl;
 
 
@@ -17,7 +18,8 @@ public class InsertarCategoriaAccion extends Accion{
 		
 
 	String StrNombre = request.getParameter("nomCategoria");
-	new ServicioCategoriasImpl().insertar(new Categoria(StrNombre));
+	ServicioCategorias servicioCategorias =  (ServicioCategorias) getBean("ServicioCategorias", request);
+	servicioCategorias.insertar(new Categoria(StrNombre));
 	return ("Categoria.MostrarCategorias.do");
 	}
 }

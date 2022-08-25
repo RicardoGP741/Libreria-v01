@@ -11,9 +11,16 @@
   	<servlet-name>ControladorLibros</servlet-name>
   	<servlet-class>aplicacion.ControladorLibros</servlet-class>
   </servlet>
-  
   <servlet-mapping>
   	<servlet-name>ControladorLibros</servlet-name>
   	<url-pattern>*.do</url-pattern>
   </servlet-mapping>
+  
+  <context-param>
+	  <param-name>contextConfigLocation</param-name>
+	  <param-value>classpath:contextoAplicacion.xml</param-value>
+  </context-param>
+  <listener>
+	  <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+  </listener>
 </web-app>

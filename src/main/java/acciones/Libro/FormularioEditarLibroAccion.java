@@ -22,16 +22,17 @@ public class FormularioEditarLibroAccion extends Accion{
 	
 
 		int idLibro = Integer.parseInt(request.getParameter("id"));  
-		ServicioLibros servicioLibros = new ServicioLibrosImpl();
+		ServicioLibros servicioLibros = (ServicioLibros) getBean("ServicioLibros", request);
+		ServicioCategorias servicioCategorias =  (ServicioCategorias) getBean("ServicioCategorias", request);
+		ServicioProvedores servicioProvedores =  (ServicioProvedores) getBean("ServicioProvedores", request);
 		
 		Libro l = servicioLibros.buscarPorClave(idLibro);
 		
-		ServicioCategorias servicioCategorias = new ServicioCategoriasImpl();
-		ServicioProvedores servicioProvedores = new ServicioProvedoresImpl();	
 		List<Categoria>ListaDeCategorias = servicioCategorias.buscarTodos();
 		List<Provedor>ListaDeProvedores = servicioProvedores.buscarTodos();	
 			request.setAttribute("ListaDeCategorias", ListaDeCategorias);
 			request.setAttribute("ListaDeProvedores", ListaDeProvedores);
+			request.setAttribute("l", l);
 			
 			return ("FormularioEditarLibro.jsp?id="+idLibro);
 			

@@ -4,6 +4,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.hibernate.HibernateException;
+import org.springframework.web.context.WebApplicationContext;
+import org.springframework.web.context.support.WebApplicationContextUtils;
 
 import dbHelpers.DataBaseException;
 
@@ -41,5 +43,12 @@ public abstract class Accion {
 		
 		
 		return accion;
+	}
+	
+	public Object getBean(String nombre, HttpServletRequest request) {
+		
+		WebApplicationContext factoria = WebApplicationContextUtils.getRequiredWebApplicationContext(request.getSession().getServletContext()); 	
+		return factoria.getBean(nombre);
+		
 	}
 }

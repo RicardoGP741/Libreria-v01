@@ -13,7 +13,7 @@ public class BorrarLibroAccion extends Accion{
 	public String ejecutar(HttpServletRequest request, HttpServletResponse response){
 		
 		int id = Integer.parseInt(request.getParameter("id"));
-		ServicioLibros servicioLibros = new ServicioLibrosImpl();
+		ServicioLibros servicioLibros = (ServicioLibros) getBean("ServicioLibros", request);
 		servicioLibros.borrar(servicioLibros.buscarPorClave(id));
 		return "Libro.MostrarLibros.do";
 

@@ -13,7 +13,7 @@ public class BorrarProvedorAccion extends Accion{
 	public String ejecutar(HttpServletRequest request, HttpServletResponse response){
 		
 		int id = Integer.parseInt(request.getParameter("id"));
-		ServicioProvedores servicioProvedores = new ServicioProvedoresImpl();
+		ServicioProvedores servicioProvedores =  (ServicioProvedores) getBean("ServicioProvedores", request);
 
 		servicioProvedores.borrar(servicioProvedores.buscarPorClave(id));
 		return ("Provedor.MostrarProvedores.do");

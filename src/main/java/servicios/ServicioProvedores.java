@@ -3,6 +3,7 @@ package servicios;
 import java.util.List;
 
 import beans.Provedor;
+import dao.ProvedoresDAO;
 import dbHelpers.DataBaseException;
 
 
@@ -13,4 +14,7 @@ public interface ServicioProvedores {
 	public abstract void guardarCambios(Provedor prov);
 	public abstract List<Provedor> buscarProvedores() throws DataBaseException;
 	public abstract Provedor buscarPorClave(int id);
+	
+	public ProvedoresDAO getProvedoresDAO();
+	public void setProvedoresDAO(ProvedoresDAO provedoresDAO);
 }

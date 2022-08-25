@@ -13,8 +13,7 @@ public class ServicioProvedoresImpl implements ServicioProvedores {
 	private ProvedoresDAO provedoresDAO=null;
 	
 	public ServicioProvedoresImpl() {
-		DAOFactory factoria = DAOAbstractFactory.getInstance();
-		provedoresDAO = factoria.getProvedorDAO();
+
 	}
 
 	@Override
@@ -45,14 +44,20 @@ public class ServicioProvedoresImpl implements ServicioProvedores {
 		// TODO Auto-generated method stub
 		return provedoresDAO.buscarProvedores();
 	}
-
-
-
 	@Override
 	public Provedor buscarPorClave(int id) {
 		// TODO Auto-generated method stub
 		return provedoresDAO.buscarPorClave(id);
 	}
-	
+	@Override
+	public ProvedoresDAO getProvedoresDAO() {
+		// TODO Auto-generated method stub
+		return provedoresDAO;
+	}
+	@Override
+	public void setProvedoresDAO(ProvedoresDAO provedoresDAO) {
+		// TODO Auto-generated method stub
+		this.provedoresDAO = provedoresDAO;
+	}
 	
 }

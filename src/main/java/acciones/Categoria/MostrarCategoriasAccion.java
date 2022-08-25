@@ -6,8 +6,13 @@ import javax.servlet.http.HttpServletResponse;
 
 import acciones.Accion;
 import beans.Categoria;
+import dao.CategoriaDAO;
+import dao.LibroDAO;
+import dao.ProvedoresDAO;
 import servicios.ServicioCategorias;
 import servicios.ServicioCategoriasImpl;
+import servicios.ServicioLibros;
+import servicios.ServicioProvedores;
 
 
 public class MostrarCategoriasAccion extends Accion{
@@ -15,7 +20,9 @@ public class MostrarCategoriasAccion extends Accion{
 	@Override
 	public String ejecutar(HttpServletRequest request, HttpServletResponse response){
 
-		ServicioCategorias servicioCategorias = new ServicioCategoriasImpl();
+		ServicioCategorias servicioCategorias =  (ServicioCategorias) getBean("ServicioCategorias", request);
+		CategoriaDAO categoriaDAO = (CategoriaDAO) getBean("CategoriaDAO", request);
+		servicioCategorias.setCategoriaDAO(categoriaDAO);
 			
 		List<Categoria>ListaDeCategorias = servicioCategorias.buscarTodos();
 			
