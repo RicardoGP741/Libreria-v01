@@ -71,7 +71,7 @@
 	              <td>${prov.getid_prov()}</td>
 	              <td>${prov.getnom_prov()}</td>
 	              <td><a href="Provedor.BorrarProvedor.do?id=${prov.getid_prov()}">Borrar</a></td>
-              	  <td><a href="FormularioEditarProvedor.jsp?id=${prov.getid_prov()}">Editar</a></td>
+              	  <td><a href="Provedor.FormularioEditarProvedor.do?id=${prov.getid_prov()}">Editar</a></td>
 	            </tr>
             </c:forEach>
           </tbody>

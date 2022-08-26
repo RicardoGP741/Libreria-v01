@@ -9,9 +9,15 @@ http://www.springframework.org/schema/context/spring-context-4.3.xsd
 http://www.springframework.org/schema/tx
 http://www.springframework.org/schema/tx/spring-tx.xsd">
 
-<bean id="libroDAO"	class="dao.JPA.LibroDAOJPAImpl"></bean>
-<bean id="categoriaDAO"	class="dao.JPA.CategoriaDAOJPAImpl"></bean>
-<bean id="provedoresDAO" class="dao.JPA.ProvedoresDAOJPAImpl"></bean>
+<bean id="libroDAO"	class="dao.JPA.LibroDAOJPAImpl">
+	<property name="entityManagerFactory" ref="entityManagerFactory"/>
+</bean>
+<bean id="categoriaDAO"	class="dao.JPA.CategoriaDAOJPAImpl">
+	<property name="entityManagerFactory" ref="entityManagerFactory"/>
+</bean>
+<bean id="provedoresDAO" class="dao.JPA.ProvedoresDAOJPAImpl">
+	<property name="entityManagerFactory" ref="entityManagerFactory"/>
+</bean>
 <bean id="ServicioLibros" class="servicios.ServicioLibrosImpl">
 	<property name="libroDAO" ref="libroDAO"></property>
 </bean>
@@ -21,4 +27,25 @@ http://www.springframework.org/schema/tx/spring-tx.xsd">
 <bean id="ServicioProvedores" class="servicios.ServicioProvedoresImpl">
 	<property name="provedoresDAO" ref="provedoresDAO"></property>
 </bean>
-</beans>
+
+<bean id="fuenteDeDatos" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+	<property name="driverClassName" value="com.mysql.jdbc.Driver"/>
+	<property name="url" value="jdbc:mysql://localhost/libreria"/>
+	<property name="username" value="root"/>
+	<property name="password" value=""/>
+</bean>
+
+<bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+	<property name="persistenceUnitName" value="Cursodia"/>
+	<property name="dataSource" ref="fuenteDeDatos"/>
+	<property name="jpaVendorAdapter">
+		<bean id= "jpaVendorAdapter" class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
+			<property name="databasePlatform" value="org.hibernate.dialect.MySQL5Dialect"/>
+			<property name="showSql" value="true"/>
+		</bean>
+	</property>
+</bean>
+
+
+
+</beans> 

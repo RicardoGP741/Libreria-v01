@@ -72,7 +72,7 @@
 	              <td>${cat.getid_cat()}</td>
 	              <td>${cat.getnom_cat()}</td>
 				  <td><a href="Categoria.BorrarCategoria.do?id=${cat.getid_cat()}">Borrar</a></td>
-              	  <td><a href="FormularioEditarCategoria.jsp?id=${cat.getid_cat()}">Editar</a></td>
+              	  <td><a href="Categoria.FormularioEditarCategoria.do?id=${cat.getid_cat()}">Editar</a></td>
 	            </tr>
             </c:forEach>
           </tbody>
