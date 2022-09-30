@@ -2,7 +2,10 @@
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import beans.Libro;
 import dao.CategoriaDAO;
@@ -11,11 +14,17 @@ import dao.DAOFactory;
 import dao.LibroDAO;
 import dao.ProvedoresDAO;
 import dbHelpers.DataBaseException;
+import repository.LibroRepository;
 
+
+@Service
+@Transactional
 public class ServicioLibrosImpl implements ServicioLibros {
 
 	private LibroDAO libroDAO=null;
 
+	@Autowired
+	private LibroRepository repository;
 
 	
 	public ServicioLibrosImpl() {
@@ -30,7 +39,8 @@ public class ServicioLibrosImpl implements ServicioLibros {
 	@Override
 	public List<Libro> buscarTodos() {
 		// TODO Auto-generated method stub
-		return libroDAO.buscarTodos();
+		//return libroDAO.buscarTodos();
+		return repository.findAll();
 	}
 
 	@Override
